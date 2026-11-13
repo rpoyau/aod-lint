@@ -2,23 +2,45 @@
   "title": "AOD-Lint: Executable Verification for the Axiomatic Fundamentalism Protocol",
   "version": "v0.2.0",
   "publication_date": "2026-11-13",
-  "upload_type": "publication",
-  "publication_type": "article",
   "description": "<p><strong>∂<sub>in</sub>𝒢 ⊢ 𝒱<sub>∘</sub>, Φ<sub>ext</sub>(𝒱<sub>∘</sub>) = 0, r<sub>AF</sub> ∈ {0,1}<sup>8</sup></strong></p>\n<p><em>Boundary premises determine interior claims; undeclared imports are exterior flux.</em></p>\n<p><strong>AOD-Lint</strong> extends the Axiomatic Fundamentalism (AF) protocol from a human editorial guideline to a decidable verification calculus over finite typed manuscript graphs, accompanied by a self-hosted native Rust AST compiler and linter for Typst (<code>.typ</code>) and LaTeX (<code>.tex</code>) treatises.</p>\n<ul>\n<li><strong>main.pdf — The protocol extension:</strong> Epistemic boundary closure axioms, typed derivation DAGs, two-pass premise hoisting with ontological liability receipts, the 8-bit Reviewer Rubric Boolean meet-semilattice 𝔹<sub>8</sub>, finite AFC Stokes and trit-capacity verification, one-way <code>Main</code>/<code>Manual</code> quotient firewalls with SHA-256 immutability, bounded-hop blast-radius slicing, and source-tree epistemic hygiene.</li>\n<li><strong>manual.pdf — Reference engine and worked ledgers:</strong> Rust crate architecture (<code>src/</code>), CLI execution spine (<code>check</code>, <code>digest</code>, <code>slice</code>, <code>hygiene</code>), worked 9-column Declared Edge Computation (D.E.C.) and discrete Stokes fixtures, repository state-leakage quarantine rules, and the Stratified Axiomatic Inquiry multi-agent protocol.</li>\n</ul>",
-  "creators": [
-    {
-      "name": "Reginald, Poyau",
-      "affiliation": "Independent Researcher, Switzerland",
-      "orcid": "0009-0007-8303-8627"
-    }
-  ],
+  "upload_type": "publication",
+  "publication_type": "preprint",
   "access_right": "open",
   "license": "mit",
   "language": "eng",
+  "creators": [
+    {
+      "name": "Poyau, Reginald",
+      "orcid": "0009-0007-8303-8627"
+    }
+  ],
+  "additional_titles": [
+    {
+      "title": "Premise-Boundary Closure, Two-Pass Hoisting, and Tiered Treatise Hygiene",
+      "type": {
+        "id": "subtitle"
+      },
+      "lang": {
+        "id": "eng"
+      }
+    },
+    {
+      "title": "A Decidable Extension to Axiomatic Fundamentalism (AF)",
+      "type": {
+        "id": "subtitle"
+      },
+      "lang": {
+        "id": "eng"
+      }
+    }
+  ],
   "keywords": [
     "axiomatic fundamentalism",
     "formal verification",
-    "traceable research",
+    "premise-boundary closure",
+    "typed derivation graphs",
+    "two-pass premise hoisting",
+    "Boolean meet-semilattice",
     "epistemic hygiene",
     "AFC",
     "AOD",
@@ -27,30 +49,86 @@
     "Typst",
     "Rust",
     "static analysis",
-    "scientific integrity",
-    "falsifiability",
-    "relational modeling"
+    "cs.LO",
+    "math.LO",
+    "cs.PL",
+    "cs.SE",
+    "cs.DM",
+    "cs.AI"
+  ],
+  "subjects": [
+    {
+      "term": "Logic in Computer Science",
+      "identifier": "https://arxiv.org/list/cs.LO/recent",
+      "scheme": "url"
+    },
+    {
+      "term": "Logic",
+      "identifier": "https://arxiv.org/list/math.LO/recent",
+      "scheme": "url"
+    },
+    {
+      "term": "Programming Languages",
+      "identifier": "https://arxiv.org/list/cs.PL/recent",
+      "scheme": "url"
+    },
+    {
+      "term": "Software Engineering",
+      "identifier": "https://arxiv.org/list/cs.SE/recent",
+      "scheme": "url"
+    },
+    {
+      "term": "Discrete Mathematics",
+      "identifier": "https://arxiv.org/list/cs.DM/recent",
+      "scheme": "url"
+    },
+    {
+      "term": "Artificial Intelligence",
+      "identifier": "https://arxiv.org/list/cs.AI/recent",
+      "scheme": "url"
+    }
   ],
   "related_identifiers": [
     {
       "identifier": "10.5281/zenodo.17561188",
-      "relation": "extends",
-      "resource_type": "publication-article"
+      "relation": "continues",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
     },
     {
       "identifier": "10.5281/zenodo.17795590",
       "relation": "references",
-      "resource_type": "publication-article"
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
     },
     {
       "identifier": "10.5281/zenodo.17561404",
       "relation": "references",
-      "resource_type": "publication-article"
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
     },
     {
       "identifier": "10.5281/zenodo.20486270",
       "relation": "references",
-      "resource_type": "publication-article"
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
     }
+  ],
+  "custom": {
+    "code:codeRepository": "https://github.com/rpoyau/aod-lint"
+  },
+  "references": [
+    "Poyau, Reginald. Axiomatic Fundamentalism (AF): A Logical Protocol for Traceable Research. Zenodo, 2025. https://doi.org/10.5281/zenodo.17561188.",
+    "Poyau, Reginald. Axiomatic Fundamentalism Calculus (AFC): The Hidden Form of Stokes. Zenodo, 2025. https://doi.org/10.5281/zenodo.17795590.",
+    "Poyau, Reginald. General Mechanics. Zenodo, 2025. https://doi.org/10.5281/zenodo.17561404.",
+    "Poyau, Reginald. Alpha-Omega Dynamics (AOD): The Hidden Temporal Dynamics of Stokes. Zenodo, 2026. https://doi.org/10.5281/zenodo.20486270.",
+    "Shannon, Claude E. A Mathematical Theory of Communication. Bell System Technical Journal, 1948. https://doi.org/10.1002/j.1538-7305.1948.tb01338.x.",
+    "Cover, Thomas M. and Thomas, Joy A. Elements of Information Theory. Wiley-Interscience, 2006.",
+    "Norris, James R. Markov Chains. Cambridge University Press, 1997. https://doi.org/10.1017/CBO9780511810633.",
+    "Cormen, Thomas H. and Leiserson, Charles E. and Rivest, Ronald L. and Stein, Clifford. Introduction to Algorithms. MIT Press, 2022.",
+    "Davey, Brian A. and Priestley, Hilary A. Introduction to Lattices and Order. Cambridge University Press, 2002. https://doi.org/10.1017/CBO9780511809088.",
+    "Mädje, Laurenz. Typst: A Programmable Markup Language for Typesetting. Technical University of Berlin, 2022.",
+    "National Institute of Standards and Technology. Secure Hash Standard (SHS). U.S. Department of Commerce, 2015. https://doi.org/10.6028/NIST.FIPS.180-4.",
+    "Klabnik, Steve and Nichols, Carol. The Rust Programming Language. No Starch Press, 2023."
   ]
 }

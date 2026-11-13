@@ -165,6 +165,7 @@ manual.pdf
 source.zip
 bundle.zip
 tests.txt
+patch_summary.txt
 BUNDLE_CONTENTS_SHA256.txt
 SHA256.txt
 ```

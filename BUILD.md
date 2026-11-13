@@ -78,8 +78,9 @@ manual.pdf
 source.zip
 bundle.zip
 tests.txt
+patch_summary.txt
 BUNDLE_CONTENTS_SHA256.txt
 SHA256.txt
 ```
 
-`bundle.zip` preserves `main.pdf` as its first member. `.zenodo.json` is maintained at the repository root for GitHub-Zenodo release synchronization.
+`bundle.zip` preserves `main.pdf` as its first member. `.zenodo.json` is maintained at the repository root (with `references` verified by `scripts/sync_zenodo_references.py --check`) for GitHub-Zenodo release synchronization.

@@ -30,6 +30,9 @@ jobs:
       - name: Run Rust test and self-hosting suite
         run: cargo test --locked || cargo test
 
+      - name: Check Zenodo references
+        run: python3 scripts/sync_zenodo_references.py --check
+
       - name: Build paired PDFs and release bundle
         run: python3 scripts/build_release_bundle.py --outdir dist
 
@@ -69,6 +72,7 @@ jobs:
             dist/source.zip \
             dist/bundle.zip \
             dist/tests.txt \
+            dist/patch_summary.txt \
             dist/BUNDLE_CONTENTS_SHA256.txt \
             dist/SHA256.txt \
             --clobber
