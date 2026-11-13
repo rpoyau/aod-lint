@@ -313,15 +313,17 @@ pub fn collect_source_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> R
 }
 
 fn classify_tier(rel_path: &str) -> DocumentTier {
-    if rel_path.starts_with("manual/") || rel_path == "manual.typ" || rel_path == "manual.tex" {
+    let p = rel_path.strip_prefix("tex/").unwrap_or(rel_path);
+    if p.starts_with("manual/") || p == "manual.typ" || p == "manual.tex" {
         DocumentTier::Manual
-    } else if rel_path.starts_with("appendices/") {
+    } else if p.starts_with("appendices/") {
         DocumentTier::Appendix
-    } else if rel_path == "main.typ"
-        || rel_path == "main.tex"
-        || rel_path == "preamble.typ"
-        || rel_path == "preamble.tex"
-        || rel_path.starts_with("sections/")
+    } else if p == "main.typ"
+        || p == "main.tex"
+        || p == "preamble.typ"
+        || p == "preamble.tex"
+        || p.starts_with("sections/")
+        || p.starts_with("corollaries/")
     {
         DocumentTier::Main
     } else {

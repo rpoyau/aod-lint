@@ -33,14 +33,30 @@ jobs:
       - name: Build paired PDFs and release bundle
         run: python3 scripts/build_release_bundle.py --outdir dist
 
+      - name: Audit upstream canonical LaTeX corpus (aod, afc, general-mechanics)
+        run: |
+          cargo build --release
+          python3 scripts/verify_upstream_corpus.py \
+            --bin target/release/aod-lint \
+            --clone-dir /tmp/upstream-corpus \
+            --summary-md "$GITHUB_STEP_SUMMARY" \
+            --json-out /tmp/upstream_corpus_report.json
+          rm -rf /tmp/upstream-corpus
+
       - name: Verify post-build repository hygiene
-        run: cargo run --release -- hygiene .
+        run: ./target/release/aod-lint hygiene .
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: aod-lint-publication
           path: dist/*
+
+      - name: Upload upstream corpus audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: upstream-corpus-audit
+          path: /tmp/upstream_corpus_report.json
 
       - name: Upload release assets
         if: github.event_name == 'release'

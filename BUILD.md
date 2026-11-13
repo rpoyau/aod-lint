@@ -56,6 +56,18 @@ Run `scripts/build_release_bundle.py` from the repository root to execute the pa
 python3 scripts/build_release_bundle.py --outdir dist
 ```
 
+## Upstream Canonical LaTeX Corpus CI Gate
+
+On every push and pull request, `.github/workflows/build.yml` executes `scripts/verify_upstream_corpus.py` to shallow-clone and audit the three upstream LaTeX treatises (`rpoyau/aod`, `rpoyau/afc`, and `rpoyau/general-mechanics`) across `check --strict`, `digest`, `slice`, and `hygiene`:
+
+```bash
+# Shallow-clone into a temporary directory (CI mode)
+python3 scripts/verify_upstream_corpus.py --clone-dir /tmp/upstream-corpus
+
+# Or audit existing sibling checkouts offline
+python3 scripts/verify_upstream_corpus.py --corpus-dir ..
+```
+
 ## Artifact order
 
 For Zenodo or archival repositories with a default preview document, place `main.pdf` first:

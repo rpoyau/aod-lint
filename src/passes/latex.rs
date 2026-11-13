@@ -213,5 +213,41 @@ fn compute_literature_note_spans(source: &str) -> Vec<(usize, usize)> {
             search_from = pos;
         }
     }
+
+    // General Mechanics paragraph-scoped literature notes:
+    // e.g. \noindent\emph{Literature note.} ... (until blank line or structural boundary)
+    let gm_lit_re =
+        Regex::new(r"(?i)\\(?:emph|textit|textbf|paragraph)\{\s*Literature\s+notes?\.?\s*\}")
+            .unwrap();
+    let boundary_re = Regex::new(
+        r"^\\(?:par\b|section\b|subsection\b|subsubsection\b|paragraph\b|begin\{|end\{)",
+    )
+    .unwrap();
+
+    for mat in gm_lit_re.find_iter(source) {
+        let start = mat.start();
+        let after_header = mat.end();
+        let rest = &source[after_header..];
+        let mut end = source.len();
+
+        if let Some(nl_pos) = rest.find('\n') {
+            let mut cursor = after_header + nl_pos + 1;
+            for raw_line in source[cursor..].split('\n') {
+                let trimmed_cr = raw_line.strip_suffix('\r').unwrap_or(raw_line);
+                if trimmed_cr.trim().is_empty() {
+                    end = cursor;
+                    break;
+                }
+                let code_trimmed = strip_latex_comment(trimmed_cr).trim_start();
+                if boundary_re.is_match(code_trimmed) {
+                    end = cursor;
+                    break;
+                }
+                cursor += raw_line.len() + 1;
+            }
+        }
+        spans.push((start, end.min(source.len())));
+    }
+
     spans
 }

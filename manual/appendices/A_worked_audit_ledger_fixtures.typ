@@ -18,8 +18,9 @@ A verification protocol must satisfy its own invariants (`AF7`). `AOD-Lint` is s
     [`G4-Hygiene`], [`aod-lint hygiene .`], [Zero tracked agent prompts, zero personal cloud tokens, zero scratch paths, zero checked-in PDFs or archives.], [`11111111` (`0xFF`)],
     [`G5-Stokes`], [`cargo test --test test_stokes`], [Exact antisymmetry $phi_(i j) = -phi_(j i)$, $S_("int")(R) = 0$, and $S_("div")(R) = S_(partial)(R) = 5/2$.], [`PASS`],
     [`G6-Build`], [`typst compile main.typ` & `manual/main.typ`], [Clean paired PDF compilation of `main.pdf` and `manual.pdf` with zero unresolved labels or warnings.], [`exit 0`],
+    [`G7-Corpus`], [`scripts/verify_upstream_corpus.py`], [CI cross-audit of `rpoyau/aod`, `rpoyau/afc`, and `rpoyau/general-mechanics` (`check --strict`, `digest`, `slice`, `hygiene`).], [`3/3 PASS`],
   ),
-  caption: [Self-hosting verification ledger executed on `rpoyau/aod-lint`.],
+  caption: [Self-hosting and upstream corpus verification ledger executed on `rpoyau/aod-lint`.],
 ) <tab:man-self-matrix>
 
 #literature-note[

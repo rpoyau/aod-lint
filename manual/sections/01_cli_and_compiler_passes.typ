@@ -38,8 +38,8 @@ Unlike line-oriented regular-expression scripts, `TypstAstPass` parses `.typ` so
 Because upstream foundational treatises (`AF`, `AFC`, `General Mechanics`, and `AOD`) maintain archival `.tex` sources, `LatexPass` enforces identical epistemic invariants across LaTeX manuscripts:
 
 + *Comment Stripping and Macro Argument Filtering:* Unescaped `%` comments and `#1` macro parameter placeholders inside `preamble.tex` definitions are stripped prior to reference extraction.
-+ *Cross-Document `xr-hyper` Resolution:* Paired `Manual` references using `\mainequation{main:...}`, `\mainsection{main:...}`, `\mainappendix{main:...}`, and `\maintable{main:...}` resolve cleanly across the `main:` prefix to their frozen `Main` label definitions without false dangling-reference alerts.
-+ *Brace-Balanced Literature-Note Spans:* Multi-line `\aodliteraturenote{...}` blocks are tracked via brace depth so `\cite[§X]{key}` inside localized literature notes passes cleanly while inline prose `\cite{key}` raises a `Sec7PreciseAnchors` warning.
++ *Cross-Document `xr-hyper` and `tex/` Root Resolution:* Paired `Manual` references using `\mainequation{main:...}`, `\mainsection{main:...}`, `\mainappendix{main:...}`, and `\maintable{main:...}` resolve cleanly across the `main:` prefix, while `AodDigestPass` classifies both root-level (`sections/`, `appendices/`, `manual/`) and `tex/`-rooted (`tex/sections/`, `tex/corollaries/`, `tex/appendices/`) treatises.
++ *Brace-Balanced and Paragraph-Scoped Literature Notes:* Both multi-line `\aodliteraturenote{...}` blocks (`AOD`) and paragraph-scoped `\noindent\emph{Literature note.}` blocks (`General Mechanics`) pass cleanly while inline body prose `\cite{key}` raises a `Sec7PreciseAnchors` warning.
 
 #literature-note[
   Programmable markup parsing and concrete syntax trees in Typst: @madje2022typst[§3]. Localized literature-note convention: @poyau2025gm[§1].

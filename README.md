@@ -169,7 +169,7 @@ BUNDLE_CONTENTS_SHA256.txt
 SHA256.txt
 ```
 
-Generated PDFs and archives are never committed to the Git working tree; `aod-lint hygiene .` enforces a clean source-only repository on every commit and pull request.
+Generated PDFs and archives are never committed to the Git working tree; `aod-lint hygiene .` enforces a clean source-only repository on every commit and pull request. In CI (`.github/workflows/build.yml`), `scripts/verify_upstream_corpus.py` additionally shallow-clones and audits the three canonical upstream LaTeX repositories (`rpoyau/aod`, `rpoyau/afc`, and `rpoyau/general-mechanics`) across `check --strict`, `digest`, `slice`, and `hygiene`.
 
 ## License
 
