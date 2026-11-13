@@ -55,6 +55,8 @@ impl AodDigestPass {
         source_files.sort();
 
         let typ_include_re = Regex::new(r#"#(?:include|import)\s+"([^"]+\.typ)""#).unwrap();
+        let typ_main_ref_re =
+            Regex::new(r#"#main-(?:ref|eq|sec|cor|app|tab|choice|con|ax)\(\s*"([^"]+)""#).unwrap();
         let tex_input_re = Regex::new(r"\\(?:input|include)\{([^}]+)\}").unwrap();
         let tex_heading_re = Regex::new(r"\\(sub)*section\*?(?:\[[^\]]*\])?\{([^}]+)\}").unwrap();
         let tex_label_re = Regex::new(r"\\label\{([^}]+)\}").unwrap();
@@ -106,6 +108,22 @@ impl AodDigestPass {
                     let resolved = resolve_relative_include(rel_path, raw_inc);
                     if !includes.contains(&resolved) {
                         includes.push(resolved);
+                    }
+                }
+
+                for (idx, raw_line) in content.lines().enumerate() {
+                    let line = idx + 1;
+                    let code = raw_line.split("//").next().unwrap_or("");
+                    for cap in typ_main_ref_re.captures_iter(code) {
+                        let target = cap[1].trim().to_string();
+                        if !target.is_empty() {
+                            references.push(RefRecord {
+                                target,
+                                file: rel_path.clone(),
+                                line,
+                                has_anchor: true,
+                            });
+                        }
                     }
                 }
 
@@ -173,7 +191,12 @@ impl AodDigestPass {
             }
 
             for r in &f.references {
-                if let Some((target_file, target_tier)) = label_to_file.get(&r.target) {
+                let resolved_target = label_to_file.get(&r.target).or_else(|| {
+                    r.target
+                        .strip_prefix("main:")
+                        .and_then(|stripped| label_to_file.get(stripped))
+                });
+                if let Some((target_file, target_tier)) = resolved_target {
                     edges.push(EdgeRecord {
                         origin: f.path.clone(),
                         target: target_file.clone(),
@@ -210,7 +233,7 @@ impl AodDigestPass {
 
         Ok(AodManifest {
             schema_version: "1.0".to_string(),
-            root: base_dir.to_string_lossy().to_string(),
+            root: ".".to_string(),
             files,
             edges,
             firewall_violations,
@@ -222,6 +245,11 @@ impl AodDigestPass {
         baseline: &AodManifest,
         current: &AodManifest,
     ) -> Vec<String> {
+        let baseline_hashes: HashMap<&str, &str> = baseline
+            .files
+            .iter()
+            .map(|f| (f.path.as_str(), f.sha256.as_str()))
+            .collect();
         let current_hashes: HashMap<&str, &str> = current
             .files
             .iter()
@@ -235,28 +263,36 @@ impl AodDigestPass {
             }
             match current_hashes.get(base_file.path.as_str()) {
                 None => violations.push(format!(
-                    "Frozen Main file '{}' was deleted or moved (expected sha256 {}).",
-                    base_file.path, base_file.sha256
+                    "Frozen {:?} file '{}' was deleted or moved (expected sha256 {}).",
+                    base_file.tier, base_file.path, base_file.sha256
                 )),
                 Some(&cur_hash) if cur_hash != base_file.sha256 => violations.push(format!(
-                    "Frozen Main file '{}' was mutated (baseline sha256 {} != current {}).",
-                    base_file.path, base_file.sha256, cur_hash
+                    "Frozen {:?} file '{}' was mutated (baseline sha256 {} != current {}).",
+                    base_file.tier, base_file.path, base_file.sha256, cur_hash
                 )),
                 _ => {}
+            }
+        }
+        for cur_file in &current.files {
+            if cur_file.frozen && !baseline_hashes.contains_key(cur_file.path.as_str()) {
+                violations.push(format!(
+                    "New frozen {:?} file '{}' was added (sha256 {}).",
+                    cur_file.tier, cur_file.path, cur_file.sha256
+                ));
             }
         }
         violations
     }
 }
 
-fn collect_source_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Result<(), String> {
+pub fn collect_source_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Result<(), String> {
     let entries = fs::read_dir(dir)
         .map_err(|e| format!("Failed to read directory {}: {}", dir.display(), e))?;
     for entry in entries {
         let entry = entry.map_err(|e| e.to_string())?;
         let path = entry.path();
         let file_name = entry.file_name().to_string_lossy().to_string();
-        if file_name.starts_with('.') || file_name == "target" {
+        if file_name.starts_with('.') || file_name == "target" || file_name == "dist" {
             continue;
         }
         if path.is_dir() {
@@ -277,15 +313,17 @@ fn collect_source_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Resul
 }
 
 fn classify_tier(rel_path: &str) -> DocumentTier {
-    if rel_path.starts_with("manual/") || rel_path == "manual.typ" || rel_path == "manual.tex" {
+    let p = rel_path.strip_prefix("tex/").unwrap_or(rel_path);
+    if p.starts_with("manual/") || p == "manual.typ" || p == "manual.tex" {
         DocumentTier::Manual
-    } else if rel_path.starts_with("appendices/") {
+    } else if p.starts_with("appendices/") {
         DocumentTier::Appendix
-    } else if rel_path == "main.typ"
-        || rel_path == "main.tex"
-        || rel_path == "preamble.typ"
-        || rel_path == "preamble.tex"
-        || rel_path.starts_with("sections/")
+    } else if p == "main.typ"
+        || p == "main.tex"
+        || p == "preamble.typ"
+        || p == "preamble.tex"
+        || p.starts_with("sections/")
+        || p.starts_with("corollaries/")
     {
         DocumentTier::Main
     } else {
@@ -358,7 +396,7 @@ fn extract_latex_items(
         for cap in ref_re.captures_iter(code) {
             for target in cap[1].split(',') {
                 let target = target.trim().to_string();
-                if !target.is_empty() {
+                if !target.is_empty() && !target.starts_with('#') {
                     references.push(RefRecord {
                         target,
                         file: file_path.to_string(),

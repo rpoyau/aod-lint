@@ -42,6 +42,9 @@ impl Section8Rubric {
                         self.0 &= !Self::C3_CHOICES_EXPLICIT
                     }
                     RuleAnchor::AF4NoMidstreamImports => self.0 &= !Self::C4_NO_EXTERNAL_LAWS,
+                    RuleAnchor::AF6ScopeDiscipline | RuleAnchor::RepoHygieneAgentLeakage => {
+                        self.0 &= !Self::C5_DEMOS_ISOLATED
+                    }
                     RuleAnchor::AF7Falsification => self.0 &= !Self::C6_FALSIFICATION_TIED,
                     RuleAnchor::Sec7PreciseAnchors | RuleAnchor::Sec7UniqueLabels => {
                         self.0 &= !Self::C7_LABELS_PRECISE

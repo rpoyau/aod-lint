@@ -1,0 +1,78 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Typst CLI
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          curl -fsSL https://github.com/typst/typst/releases/download/v0.15.1/typst-x86_64-unknown-linux-musl.tar.xz -o /tmp/typst.tar.xz
+          tar -xf /tmp/typst.tar.xz -C /tmp
+          cp /tmp/typst-x86_64-unknown-linux-musl/typst "$HOME/.local/bin/typst"
+          chmod +x "$HOME/.local/bin/typst"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Run Rust test and self-hosting suite
+        run: cargo test --locked || cargo test
+
+      - name: Check Zenodo references
+        run: python3 scripts/sync_zenodo_references.py --check
+
+      - name: Build paired PDFs and release bundle
+        run: python3 scripts/build_release_bundle.py --outdir dist
+
+      - name: Audit upstream canonical LaTeX corpus (aod, afc, general-mechanics)
+        run: |
+          cargo build --release
+          python3 scripts/verify_upstream_corpus.py \
+            --bin target/release/aod-lint \
+            --clone-dir /tmp/upstream-corpus \
+            --summary-md "$GITHUB_STEP_SUMMARY" \
+            --json-out /tmp/upstream_corpus_report.json
+          rm -rf /tmp/upstream-corpus
+
+      - name: Verify post-build repository hygiene
+        run: ./target/release/aod-lint hygiene .
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: aod-lint-publication
+          path: dist/*
+
+      - name: Upload upstream corpus audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: upstream-corpus-audit
+          path: /tmp/upstream_corpus_report.json
+
+      - name: Upload release assets
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" \
+            dist/main.pdf \
+            dist/manual.pdf \
+            dist/source.zip \
+            dist/bundle.zip \
+            dist/tests.txt \
+            dist/patch_summary.txt \
+            dist/BUNDLE_CONTENTS_SHA256.txt \
+            dist/SHA256.txt \
+            --clobber

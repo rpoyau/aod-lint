@@ -28,6 +28,8 @@ pub enum RuleAnchor {
     Sec7PreciseAnchors,
     Sec7NotationConsistent,
     Sec7ExplicitChoice,
+
+    RepoHygieneAgentLeakage,
 }
 
 impl RuleAnchor {
@@ -51,6 +53,10 @@ impl RuleAnchor {
             Self::Sec7PreciseAnchors => "§7.2: References must point to a single, precise anchor",
             Self::Sec7NotationConsistent => "§7.3: Notation and units consistency",
             Self::Sec7ExplicitChoice => "§7.4: Mark modelling choices explicitly at first use",
+
+            Self::RepoHygieneAgentLeakage => {
+                "AF6 / Repo Hygiene: No agent state, private session URLs, or handoff archives in scientific source"
+            }
         }
     }
 }
