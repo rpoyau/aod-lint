@@ -173,7 +173,12 @@ impl AodDigestPass {
             }
 
             for r in &f.references {
-                if let Some((target_file, target_tier)) = label_to_file.get(&r.target) {
+                let resolved_target = label_to_file.get(&r.target).or_else(|| {
+                    r.target
+                        .strip_prefix("main:")
+                        .and_then(|stripped| label_to_file.get(stripped))
+                });
+                if let Some((target_file, target_tier)) = resolved_target {
                     edges.push(EdgeRecord {
                         origin: f.path.clone(),
                         target: target_file.clone(),
@@ -222,6 +227,11 @@ impl AodDigestPass {
         baseline: &AodManifest,
         current: &AodManifest,
     ) -> Vec<String> {
+        let baseline_hashes: HashMap<&str, &str> = baseline
+            .files
+            .iter()
+            .map(|f| (f.path.as_str(), f.sha256.as_str()))
+            .collect();
         let current_hashes: HashMap<&str, &str> = current
             .files
             .iter()
@@ -235,14 +245,22 @@ impl AodDigestPass {
             }
             match current_hashes.get(base_file.path.as_str()) {
                 None => violations.push(format!(
-                    "Frozen Main file '{}' was deleted or moved (expected sha256 {}).",
-                    base_file.path, base_file.sha256
+                    "Frozen {:?} file '{}' was deleted or moved (expected sha256 {}).",
+                    base_file.tier, base_file.path, base_file.sha256
                 )),
                 Some(&cur_hash) if cur_hash != base_file.sha256 => violations.push(format!(
-                    "Frozen Main file '{}' was mutated (baseline sha256 {} != current {}).",
-                    base_file.path, base_file.sha256, cur_hash
+                    "Frozen {:?} file '{}' was mutated (baseline sha256 {} != current {}).",
+                    base_file.tier, base_file.path, base_file.sha256, cur_hash
                 )),
                 _ => {}
+            }
+        }
+        for cur_file in &current.files {
+            if cur_file.frozen && !baseline_hashes.contains_key(cur_file.path.as_str()) {
+                violations.push(format!(
+                    "New frozen {:?} file '{}' was added (sha256 {}).",
+                    cur_file.tier, cur_file.path, cur_file.sha256
+                ));
             }
         }
         violations
@@ -358,7 +376,7 @@ fn extract_latex_items(
         for cap in ref_re.captures_iter(code) {
             for target in cap[1].split(',') {
                 let target = target.trim().to_string();
-                if !target.is_empty() {
+                if !target.is_empty() && !target.starts_with('#') {
                     references.push(RefRecord {
                         target,
                         file: file_path.to_string(),
