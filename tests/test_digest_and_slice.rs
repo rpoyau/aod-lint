@@ -145,7 +145,7 @@ fn test_latex_digest_slice_and_check() {
 
     fs::write(
         dir.join("manual/01_dec.tex"),
-        "\\section{D.E.C. Ledger}\\label{sec:dec}\nUsing \\mainequation{eq:monon}, \\SADARop{} is evaluated.\nSee \\cite{poyau2025} for background.\n",
+        "\\section{D.E.C. Ledger}\\label{sec:dec}\nUsing \\mainequation{main:eq:monon}, \\SADARop{} is evaluated.\nSee \\cite{poyau2025} for background.\n\\aodliteraturenote{AFC~\\cite{afc}.}\n",
     )
     .unwrap();
 
@@ -177,10 +177,14 @@ fn test_latex_digest_slice_and_check() {
     assert!(bundle.frozen_main_violations.is_empty());
     assert!(bundle.impacted_files.contains(&"sections/01_null.tex".to_string()));
 
+    use aod_lint::models::diagnostics::Severity;
     let man_src = fs::read_to_string(dir.join("manual/01_dec.tex")).unwrap();
     let diags = LatexPass::new("manual/01_dec.tex", &man_src, false).run();
-    assert_eq!(diags.len(), 1);
+    assert_eq!(diags.len(), 2);
+    assert_eq!(diags[0].severity, Severity::Warning);
     assert_eq!(diags[0].rule, RuleAnchor::Sec7PreciseAnchors);
+    assert_eq!(diags[1].severity, Severity::Info);
+    assert_eq!(diags[1].rule, RuleAnchor::Sec7PreciseAnchors);
 
     let _ = fs::remove_dir_all(&dir);
 }
