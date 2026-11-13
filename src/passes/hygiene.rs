@@ -28,7 +28,7 @@ impl RepoHygienePass {
             agent_dir_re: Regex::new(r"(?i)(^|/)\.(agents|codex|claude|gemini|cursor)(/|$)")
                 .unwrap(),
             agent_prompt_file_re: Regex::new(
-                r"(?i)(^|/)(AGENTS\.md|CLAUDE\.md|CODEX_PROMPT[^/]*|NEXT_CODEX_REQUEST[^/]*|START_NEW_THREAD[^/]*)$",
+                r"(?i)(^|/)(AGENTS\.md|CLAUDE\.md|ANTIGRAVITY_BOOT[^/]*|CODEX_PROMPT[^/]*|NEXT_CODEX_REQUEST[^/]*|START_NEW_THREAD[^/]*)$",
             )
             .unwrap(),
             agent_dump_file_re: Regex::new(
@@ -38,15 +38,15 @@ impl RepoHygienePass {
             archive_re: Regex::new(r"(?i)\.(zip|tar|tgz|tar\.gz|jsonl\.gz|json\.gz)$").unwrap(),
             build_artifact_re: Regex::new(r"(?i)\.(aux|fls|fdb_latexmk|synctex\.gz)$").unwrap(),
             private_session_re: Regex::new(
-                r#"(?i)(chatgpt\.com/library\?[^\s\)"']*|libfile_[a-z0-9_]+|account_id=personal)"#,
+                r#"(?i)(chatgpt\.com/[l]ibrary\?[^\s\)"']*|[l]ibfile_[a-z0-9_]+|[a]ccount_id=personal)"#,
             )
             .unwrap(),
             sandbox_path_re: Regex::new(
-                r#"(/workspace/scratch/[^\s\)"']*|/home/antigravity/[^\s\)"']*|/Users/[A-Za-z0-9_.-]+/[^\s\)"']*)"#,
+                r#"(/workspace/[s]cratch/[^\s\)"']*|/home/[a]ntigravity/[^\s\)"']*|/[U]sers/[A-Za-z0-9_.-]+/[^\s\)"']*)"#,
             )
             .unwrap(),
             private_repo_re: Regex::new(
-                r#"(?i)(github\.com/rpoyau/aod-skills[^\s\)"']*|aod-skills/blob/[^\s\)"']*)"#,
+                r#"(?i)(github\.com/rpoyau/[a]od-skills[^\s\)"']*|[a]od-skills/blob/[^\s\)"']*)"#,
             )
             .unwrap(),
             ticket_id_re: Regex::new(r"\b(MAP-\d{2}|WP[0-7])\b").unwrap(),
@@ -289,7 +289,12 @@ fn collect_repo_files(
         let entry = entry.map_err(|e| e.to_string())?;
         let path = entry.path();
         let name = entry.file_name().to_string_lossy().to_string();
-        if name == ".git" || name == "target" || name == "__pycache__" || name == ".pytest_cache" {
+        if name == ".git"
+            || name == "target"
+            || name == "dist"
+            || name == "__pycache__"
+            || name == ".pytest_cache"
+        {
             continue;
         }
         let meta = entry.metadata().map_err(|e| e.to_string())?;

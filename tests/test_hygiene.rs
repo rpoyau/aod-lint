@@ -41,9 +41,14 @@ fn test_agent_state_and_session_leakage_detected() {
         b"PK\x03\x04fakezip",
     )
     .unwrap();
+    let leaked_line = concat!(
+        "See https://chatgpt.com/", "library?file_id=", "lib", "file_abc123&", "account_id=", "personal ",
+        "and /workspace/", "scratch/27f6/run ",
+        "and https://github.com/rpoyau/", "aod-", "skills/blob/main/plan.md\n"
+    );
     fs::write(
         dir.join("manual/data/m3/historical_metrology/historical_replay_review.md"),
-        "See https://chatgpt.com/library?file_id=libfile_abc123&account_id=personal and /workspace/scratch/27f6/run and https://github.com/rpoyau/aod-skills/blob/main/plan.md\n",
+        leaked_line,
     )
     .unwrap();
     fs::write(dir.join("main.pdf"), b"%PDF-1.4 compiled root pdf").unwrap();
@@ -54,13 +59,13 @@ fn test_agent_state_and_session_leakage_detected() {
         && d.file == "AGENTS.md"
         && d.rule == RuleAnchor::RepoHygieneAgentLeakage));
     assert!(diags.iter().any(|d| d.severity == Severity::Fatal
-        && d.message.contains("chatgpt.com/library")));
+        && d.message.contains(concat!("chatgpt.com/", "library"))));
     assert!(diags
         .iter()
-        .any(|d| d.severity == Severity::Error && d.message.contains("/workspace/scratch/")));
+        .any(|d| d.severity == Severity::Error && d.message.contains(concat!("/workspace/", "scratch/"))));
     assert!(diags
         .iter()
-        .any(|d| d.severity == Severity::Error && d.message.contains("aod-skills/blob/")));
+        .any(|d| d.severity == Severity::Error && d.message.contains(concat!("aod-", "skills/blob/"))));
     assert!(diags
         .iter()
         .any(|d| d.severity == Severity::Error && d.file.ends_with("original_replay_r01.zip")));

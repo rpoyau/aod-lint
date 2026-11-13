@@ -1,2 +1,7 @@
 /target
+/dist
 Cargo.lock
+main.pdf
+manual.pdf
+manual/main.pdf
+tests.txt

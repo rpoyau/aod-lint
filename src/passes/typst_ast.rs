@@ -2,6 +2,25 @@ use regex::Regex;
 use typst_syntax::{parse, SyntaxKind, SyntaxNode};
 use crate::models::diagnostics::{Diagnostic, RuleAnchor, Severity};
 
+const INTERNAL_LABEL_PREFIXES: &[&str] = &[
+    "ax:", "ax-",
+    "def:", "def-",
+    "ch:", "ch-", "choice:", "choice-",
+    "con:", "con-",
+    "cor:", "cor-",
+    "eq:", "eq-",
+    "sec:", "sec-",
+    "app:", "app-",
+    "tab:", "tab-",
+    "fig:", "fig-",
+    "motif:", "motif-",
+    "rule:", "rule-",
+    "thm:", "thm-",
+    "lem:", "lem-",
+    "prop:", "prop-",
+    "main:", "main-",
+];
+
 pub struct TypstAstPass<'a> {
     file_path: &'a str,
     source_text: &'a str,
@@ -33,32 +52,68 @@ impl<'a> TypstAstPass<'a> {
 
     pub fn run(mut self) -> Vec<Diagnostic> {
         let root: SyntaxNode = parse(self.source_text);
-        self.traverse(&root, 0);
+        self.traverse(&root, 0, false);
         self.diagnostics
     }
 
-    fn traverse(&mut self, node: &SyntaxNode, offset: usize) {
+    fn traverse(&mut self, node: &SyntaxNode, offset: usize, in_lit_note: bool) {
+        if node.kind() == SyntaxKind::Raw {
+            return;
+        }
         let (line, col) = self.offset_to_line_col(offset);
+        let now_in_lit_note = in_lit_note || is_literature_note_call(node);
 
         if node.kind() == SyntaxKind::Ref {
-            let text = node.text();
-            let next_slice_end = (offset + text.len() + 24).min(self.source_text.len());
-            let following = &self.source_text[offset + text.len()..next_slice_end];
+            let raw = node.clone().into_text();
+            let has_supplement = raw.contains('[');
+            let target = raw
+                .split('[')
+                .next()
+                .unwrap_or("")
+                .trim()
+                .trim_start_matches('@');
 
-            if !following.trim_start().starts_with('[') {
-                self.diagnostics.push(Diagnostic {
-                    severity: Severity::Warning,
-                    rule: RuleAnchor::Sec7PreciseAnchors,
-                    file: self.file_path.to_string(),
-                    line,
-                    column: col,
-                    message: format!(
-                        "Citation '{}' lacks a precise anchor. Please honor the academic social contract & AF §7.2 by specifying the exact theorem, section, or page.",
-                        text
-                    ),
-                    suggested_fix: Some(format!("{}[Theorem X, p. Y]", text)),
-                    hoisted: false,
-                });
+            if !target.is_empty() && !is_internal_label(target) {
+                if !now_in_lit_note {
+                    let msg = if has_supplement {
+                        format!(
+                            "Inline bibliography citation '@{}' disrupts derivation flow; General Mechanics style isolates external citations in #literature-note[...].",
+                            target
+                        )
+                    } else {
+                        format!(
+                            "Inline citation '@{}' lacks a precise anchor and sits outside #literature-note[...]. Honor AF §7.2 by citing exact section/theorem inside #literature-note[...].",
+                            target
+                        )
+                    };
+                    self.diagnostics.push(Diagnostic {
+                        severity: Severity::Warning,
+                        rule: RuleAnchor::Sec7PreciseAnchors,
+                        file: self.file_path.to_string(),
+                        line,
+                        column: col,
+                        message: msg,
+                        suggested_fix: Some(format!(
+                            "#literature-note[Topic: @{}[§X, p. Y].]",
+                            target
+                        )),
+                        hoisted: false,
+                    });
+                } else if !has_supplement {
+                    self.diagnostics.push(Diagnostic {
+                        severity: Severity::Info,
+                        rule: RuleAnchor::Sec7PreciseAnchors,
+                        file: self.file_path.to_string(),
+                        line,
+                        column: col,
+                        message: format!(
+                            "Literature-note citation '@{}' lacks an explicit [§/Theorem/p.] anchor (AF §7.2).",
+                            target
+                        ),
+                        suggested_fix: Some(format!("@{}[§X, p. Y]", target)),
+                        hoisted: false,
+                    });
+                }
             }
         }
 
@@ -72,7 +127,10 @@ impl<'a> TypstAstPass<'a> {
                     file: self.file_path.to_string(),
                     line,
                     column: col + mat.start(),
-                    message: format!("Broad reference range '{}'. AF §7.2 requires pointing to a single precise anchor.", mat.as_str()),
+                    message: format!(
+                        "Broad reference range '{}'. AF §7.2 requires pointing to a single precise anchor.",
+                        mat.as_str()
+                    ),
                     suggested_fix: Some("Replace range with exact label anchor (e.g., @eq:stokes).".into()),
                     hoisted: false,
                 });
@@ -87,7 +145,7 @@ impl<'a> TypstAstPass<'a> {
                     line,
                     column: col + mat.start(),
                     message: format!("Midstream premise import '{}' detected.", mat.as_str()),
-                    suggested_fix: Some("Hoisted to Dependency Manifest. Move upfront to Section 2 (Modelling Choices) to resolve warning.".into()),
+                    suggested_fix: Some("Hoisted to Dependency Manifest. Move upfront to Modelling Choices to resolve.".into()),
                     hoisted: !self.strict_mode,
                 });
             }
@@ -112,7 +170,7 @@ impl<'a> TypstAstPass<'a> {
 
         let mut child_offset = offset;
         for child in node.children() {
-            self.traverse(child, child_offset);
+            self.traverse(child, child_offset, now_in_lit_note);
             child_offset += child.len();
         }
     }
@@ -123,4 +181,22 @@ impl<'a> TypstAstPass<'a> {
         let col = prefix.lines().last().map(|l| l.len() + 1).unwrap_or(1);
         (line, col)
     }
+}
+
+fn is_internal_label(target: &str) -> bool {
+    INTERNAL_LABEL_PREFIXES
+        .iter()
+        .any(|prefix| target.starts_with(prefix))
+}
+
+fn is_literature_note_call(node: &SyntaxNode) -> bool {
+    if node.kind() != SyntaxKind::FuncCall {
+        return false;
+    }
+    if let Some(first) = node.children().next() {
+        let ident = first.clone().into_text();
+        let trimmed = ident.trim();
+        return trimmed == "literature-note" || trimmed == "aodliteraturenote";
+    }
+    false
 }

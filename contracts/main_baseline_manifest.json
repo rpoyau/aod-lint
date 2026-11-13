@@ -1,0 +1,3027 @@
+{
+  "schema_version": "1.0",
+  "root": ".",
+  "files": [
+    {
+      "path": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "tier": "Appendix",
+      "frozen": true,
+      "sha256": "f7f9ff32e398f351f811eb4eada0c104596a42862bb23808eebfaf51b1b8c3a3",
+      "line_count": 31,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Rule Anchor and Section 8 Rubric Projection Table",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "app:rubric-map",
+          "file": "appendices/A_rule_anchor_and_rubric_map.typ",
+          "line": 3,
+          "kind": "Other"
+        },
+        {
+          "name": "tab:rubric-projection",
+          "file": "appendices/A_rule_anchor_and_rubric_map.typ",
+          "line": 25,
+          "kind": "Other"
+        }
+      ],
+      "references": [
+        {
+          "target": "tab:rubric-projection",
+          "file": "appendices/A_rule_anchor_and_rubric_map.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:rubric",
+          "file": "appendices/A_rule_anchor_and_rubric_map.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:rubric-meet",
+          "file": "appendices/A_rule_anchor_and_rubric_map.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:hoisting",
+          "file": "appendices/A_rule_anchor_and_rubric_map.typ",
+          "line": 27,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:rubric-meet",
+          "file": "appendices/A_rule_anchor_and_rubric_map.typ",
+          "line": 27,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "appendices/A_rule_anchor_and_rubric_map.typ",
+          "line": 30,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "appendices/B_compaction_and_firewall_invariants.typ",
+      "tier": "Appendix",
+      "frozen": true,
+      "sha256": "df2aa726d6e3cf746fbea5942b95f8bb3732fd859713557c37702c8ed3c46cf7",
+      "line_count": 39,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Compaction Boundaries and Firewall Invariants",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "app:compaction",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 3,
+          "kind": "Other"
+        },
+        {
+          "name": "tab:compaction-invariants",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 35,
+          "kind": "Other"
+        }
+      ],
+      "references": [
+        {
+          "target": "cor:stokes",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "cor:firewall-slice",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "tab:compaction-invariants",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:stokes-balance",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 19,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:tier-firewall",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 32,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 38,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2026aod",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 38,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2026aod",
+          "file": "appendices/B_compaction_and_firewall_invariants.typ",
+          "line": 38,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": [
+        "DEC",
+        "Hinge",
+        "Stokes"
+      ]
+    },
+    {
+      "path": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "tier": "Appendix",
+      "frozen": true,
+      "sha256": "6ea3f4efed3bffeafd3aeab70a9c94c19ff3e6821bb258217e5414bf0784210d",
+      "line_count": 21,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Manifest and Context-Bundle Algebraic Grammar",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "app:manifest-grammar",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 3,
+          "kind": "Other"
+        },
+        {
+          "name": "eq:manifest-tuple",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 7,
+          "kind": "Equation"
+        },
+        {
+          "name": "eq:file-record",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 11,
+          "kind": "Equation"
+        },
+        {
+          "name": "eq:context-bundle-tuple",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 15,
+          "kind": "Equation"
+        }
+      ],
+      "references": [
+        {
+          "target": "ch:slicing",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:manifest-tuple",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:context-bundle-tuple",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:hop-slice",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 13,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:manifest-tuple",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 17,
+          "has_anchor": false
+        },
+        {
+          "target": "cor:hygiene",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 17,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:context-bundle-tuple",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 17,
+          "has_anchor": false
+        },
+        {
+          "target": "cormen2022",
+          "file": "appendices/C_manifest_and_context_bundle_grammar.typ",
+          "line": 20,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "appendices/D_glossary_and_symbol_table.typ",
+      "tier": "Appendix",
+      "frozen": true,
+      "sha256": "6189d93457c14846aec14186ae8cd6522a24387df97e31905e50ce98806352b9",
+      "line_count": 35,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Glossary and Symbol Table",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "app:glossary",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 3,
+          "kind": "Other"
+        },
+        {
+          "name": "tab:symbol-glossary",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 31,
+          "kind": "Other"
+        }
+      ],
+      "references": [
+        {
+          "target": "tab:symbol-glossary",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "sec:axioms",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 15,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:graph",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 16,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:graph",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 17,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:ext-flux",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 18,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:flux",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 19,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:hoisting",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 20,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:rubric",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 21,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:rubric-meet",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 22,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:afc-module",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 23,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:afc-module",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 24,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:slicing",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 25,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:hop-slice",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 26,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:hygiene",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 27,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:inquiry",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 28,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "appendices/D_glossary_and_symbol_table.typ",
+          "line": 34,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "main.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "3cdb39ad58c43a38b59d44e483ba528f46bb896891e336191ad5431fddc92d23",
+      "line_count": 26,
+      "includes": [
+        "preamble.typ",
+        "sections/00_title.typ",
+        "sections/01_abstract.typ",
+        "sections/02_axioms_and_relational_closure.typ",
+        "sections/03_formal_verification_calculus.typ",
+        "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+        "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+        "sections/06_source_hygiene_and_provenance_isolation.typ",
+        "appendices/A_rule_anchor_and_rubric_map.typ",
+        "appendices/B_compaction_and_firewall_invariants.typ",
+        "appendices/C_manifest_and_context_bundle_grammar.typ",
+        "appendices/D_glossary_and_symbol_table.typ"
+      ],
+      "headings": [],
+      "labels": [],
+      "references": [],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "7bdd2e0d49a8e1724a28133ad9fdc96bfbea47077df47a3b26d7398862517e55",
+      "line_count": 27,
+      "includes": [
+        "manual/preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Self-Hosting Verification Matrix and Benchmark Ledger",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "app:man-self-audit",
+          "file": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+          "line": 3,
+          "kind": "Other"
+        },
+        {
+          "name": "tab:man-self-matrix",
+          "file": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+          "line": 23,
+          "kind": "Other"
+        }
+      ],
+      "references": [
+        {
+          "target": "tab:man-self-matrix",
+          "file": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+          "line": 26,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": [
+        "Stokes"
+      ]
+    },
+    {
+      "path": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "b75c81eae4c1e3c831570fb2a2f766e4b39a74df23f63623cead89cc11c8d8b4",
+      "line_count": 39,
+      "includes": [
+        "manual/preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Constructive Diagnostic Remediation Catalog",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "app:man-remediation",
+          "file": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+          "line": 3,
+          "kind": "Other"
+        },
+        {
+          "name": "tab:man-remediation",
+          "file": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+          "line": 35,
+          "kind": "Other"
+        }
+      ],
+      "references": [
+        {
+          "target": "tab:man-remediation",
+          "file": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+          "line": 38,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "manual/main.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "43d2f3d4f451e8c8e61aabe5a1b551560b7d526c0cc9dee275ea0641603293c7",
+      "line_count": 67,
+      "includes": [
+        "manual/preamble.typ",
+        "manual/sections/00_scope_and_architecture.typ",
+        "manual/sections/01_cli_and_compiler_passes.typ",
+        "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+        "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+        "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+        "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+        "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+        "manual/appendices/B_diagnostic_remediation_catalog.typ"
+      ],
+      "headings": [],
+      "labels": [],
+      "references": [],
+      "distinctions": [],
+      "motifs": [
+        "DEC"
+      ]
+    },
+    {
+      "path": "manual/preamble.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "c1a79d79a404e425f0728291aa164985663d5fea517db2fb68ce8e207fc413cc",
+      "line_count": 19,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [],
+      "labels": [],
+      "references": [],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "manual/sections/00_scope_and_architecture.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "c6aaae9f418c0e2478d6eeec85697ead70c915d25d09097aed09a11517274724",
+      "line_count": 56,
+      "includes": [
+        "manual/preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Scope, Crate Topology, and Module-to-Corollary Map",
+          "line": 3
+        },
+        {
+          "level": 2,
+          "title": "Source Layout and Tier Separation",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Rust Module-to-Main Provenance Map",
+          "line": 29
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:man-scope",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-layout",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 7,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-module-map",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 29,
+          "kind": "Section"
+        },
+        {
+          "name": "tab:man-module-map",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 52,
+          "kind": "Other"
+        }
+      ],
+      "references": [
+        {
+          "target": "sec:axioms",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "sec:hygiene-inquiry",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:firewall-slice",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "ax:accountability",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 41,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:hoisting-rubric",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 42,
+          "has_anchor": true
+        },
+        {
+          "target": "app:manifest-grammar",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 43,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:boundary-cut",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 44,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:boundary-cut",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 45,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:stokes",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 46,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:firewall-slice",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 47,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:firewall-slice",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 48,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:hygiene",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 49,
+          "has_anchor": true
+        },
+        {
+          "target": "tab:man-module-map",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 31,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 55,
+          "has_anchor": true
+        },
+        {
+          "target": "klabnik2023rust",
+          "file": "manual/sections/00_scope_and_architecture.typ",
+          "line": 55,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [
+        "Axiom A2"
+      ],
+      "motifs": []
+    },
+    {
+      "path": "manual/sections/01_cli_and_compiler_passes.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "8db6a3e168baf36f01ea898bb62b34302df8610dda998ee2d9e77e5350ef203a",
+      "line_count": 46,
+      "includes": [
+        "manual/preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "CLI Grammar, AST Traversal, and Paired LaTeX Verification",
+          "line": 3
+        },
+        {
+          "level": 2,
+          "title": "Command-Line Execution Spine",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Lossless Typst AST Pass (`TypstAstPass`)",
+          "line": 28
+        },
+        {
+          "level": 2,
+          "title": "Paired LaTeX Verification Pass (`LatexPass`)",
+          "line": 36
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:man-cli",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-commands",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 7,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-typst-pass",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 28,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-latex-pass",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 36,
+          "kind": "Section"
+        }
+      ],
+      "references": [
+        {
+          "target": "ch:rubric",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 26,
+          "has_anchor": true
+        },
+        {
+          "target": "ch:graph",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 33,
+          "has_anchor": true
+        },
+        {
+          "target": "con:cardinality",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 34,
+          "has_anchor": true
+        },
+        {
+          "target": "ch:hoisting",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 34,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:hoisting-rubric",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 34,
+          "has_anchor": true
+        },
+        {
+          "target": "madje2022typst",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 45,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025gm",
+          "file": "manual/sections/01_cli_and_compiler_passes.typ",
+          "line": 45,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [
+        "Choice D1",
+        "Choice D3",
+        "Choice D4"
+      ],
+      "motifs": []
+    },
+    {
+      "path": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "af5a4053b69c7ab6aace4bf4b7b963db4a70743a5e5269678c9ec6d5322d3157",
+      "line_count": 46,
+      "includes": [
+        "manual/preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Declared Edge Computation (D.E.C.) Ledger and Stokes Fixtures",
+          "line": 3
+        },
+        {
+          "level": 2,
+          "title": "Fixture 1: Three-Node Region Cut and Interior Annihilation",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Fixture 2: Nine-Column D.E.C. Hinge-Slide Audit at $Q_4$ Origin",
+          "line": 22
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:man-stokes",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-stokes-fixture",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 7,
+          "kind": "Section"
+        },
+        {
+          "name": "eq:man-three-node-flux",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 11,
+          "kind": "Equation"
+        },
+        {
+          "name": "eq:man-stokes-verified",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 18,
+          "kind": "Equation"
+        },
+        {
+          "name": "sec:man-dec-ledger",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 22,
+          "kind": "Section"
+        },
+        {
+          "name": "tab:man-dec-slide",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 40,
+          "kind": "Other"
+        }
+      ],
+      "references": [
+        {
+          "target": "ch:afc-module",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:stokes",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "tab:man-dec-slide",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 24,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025afc",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 45,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2026aod",
+          "file": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+          "line": 45,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [
+        "Choice D5"
+      ],
+      "motifs": [
+        "DEC",
+        "Hinge",
+        "Stokes"
+      ]
+    },
+    {
+      "path": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "125f77c912052734242af9175b9a02385ab51be6c4be87dc7c04ddab57a58836",
+      "line_count": 37,
+      "includes": [
+        "manual/preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Treatise Manifest, Frozen-Main SHA-256 Guard, and Blast-Radius Slicing",
+          "line": 3
+        },
+        {
+          "level": 2,
+          "title": "Step 1: Generating and Locking the Frozen Baseline Manifest",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Step 2: Computing Bounded-Hop Blast-Radius Slices",
+          "line": 17
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:man-digest-slice",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-baseline",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 7,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-slicing",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 17,
+          "kind": "Section"
+        }
+      ],
+      "references": [
+        {
+          "target": "ch:slicing",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:firewall-slice",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "eq:hop-slice",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 19,
+          "has_anchor": true
+        },
+        {
+          "target": "app:manifest-grammar",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 29,
+          "has_anchor": true
+        },
+        {
+          "target": "nist2015sha",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 36,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2026aod",
+          "file": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+          "line": 36,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [
+        "Choice D6"
+      ],
+      "motifs": [
+        "ADAR",
+        "Awareness",
+        "Dimonon",
+        "Dion",
+        "Ditrion",
+        "Duad",
+        "Duon",
+        "Hinge",
+        "Monon",
+        "SADAR",
+        "Stokes",
+        "Tetratrion",
+        "Tritrion"
+      ]
+    },
+    {
+      "path": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "280a65bc9ef87f34f6a606895f844fef7d2bb97a333133a0a68a6592c774e47f",
+      "line_count": 53,
+      "includes": [
+        "manual/preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Repository Hygiene Pass and Agent State Quarantine",
+          "line": 3
+        },
+        {
+          "level": 2,
+          "title": "Quarantine Classification Matrix",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Figure Asset Exemption and Detached Release Packaging",
+          "line": 47
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:man-hygiene",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-hygiene-matrix",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 7,
+          "kind": "Section"
+        },
+        {
+          "name": "tab:man-hygiene-classes",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 45,
+          "kind": "Other"
+        },
+        {
+          "name": "sec:man-hygiene-figures",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 47,
+          "kind": "Section"
+        }
+      ],
+      "references": [
+        {
+          "target": "ch:hygiene",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:hygiene",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "cor:hygiene",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 44,
+          "has_anchor": true
+        },
+        {
+          "target": "tab:man-hygiene-classes",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 9,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 52,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025af",
+          "file": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+          "line": 52,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [
+        "Choice D7"
+      ],
+      "motifs": []
+    },
+    {
+      "path": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "tier": "Manual",
+      "frozen": false,
+      "sha256": "7b9bdafb41160c0eb3228214f07210e36bbb4e2480aedeac4ed8a9f4138a836a",
+      "line_count": 56,
+      "includes": [
+        "manual/preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Multi-Agent Verification Loop and Stratified Inquiry Bundles",
+          "line": 3
+        },
+        {
+          "level": 2,
+          "title": "Five-Role Deterministic Convergence Machine",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Stratified Axiomatic Inquiry Bundle Schema",
+          "line": 17
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:man-agents",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-roles",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 7,
+          "kind": "Section"
+        },
+        {
+          "name": "sec:man-inquiry-schema",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 17,
+          "kind": "Section"
+        },
+        {
+          "name": "tab:man-inquiry-gates",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 52,
+          "kind": "Other"
+        }
+      ],
+      "references": [
+        {
+          "target": "cor:hoisting-rubric",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "ch:inquiry",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 5,
+          "has_anchor": true
+        },
+        {
+          "target": "eq:inquiry-ladder",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 19,
+          "has_anchor": true
+        },
+        {
+          "target": "ch:inquiry",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 51,
+          "has_anchor": true
+        },
+        {
+          "target": "tab:man-inquiry-gates",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 35,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 55,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025af",
+          "file": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+          "line": 55,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [
+        "Choice D",
+        "Choice D8"
+      ],
+      "motifs": []
+    },
+    {
+      "path": "preamble.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "3a328f2d6993fa54f48f91dd35d3a4a3fc84076d720e6b0262cfd4ce5a979b8e",
+      "line_count": 149,
+      "includes": [],
+      "headings": [],
+      "labels": [],
+      "references": [],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "sections/00_title.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "6bf9cb8e87e815d8e4ece6666bd61a43235baee4439be9fbf543c7d93fd579cb",
+      "line_count": 36,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [],
+      "labels": [],
+      "references": [],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "sections/01_abstract.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "b1c14292b24c841e9127e5bcbb12458103256b4af2ebd5455fd20738aa8aaa5b",
+      "line_count": 11,
+      "includes": [],
+      "headings": [],
+      "labels": [],
+      "references": [],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "sections/02_axioms_and_relational_closure.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "ab6df3f2d8f724e9f36e0504b619bb2b24309837885b59626449ddfe719cb67e",
+      "line_count": 41,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Purpose, Scope, and Epistemic Boundary Axioms",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:axioms",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "ax:boundary",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 11,
+          "kind": "Axiom"
+        },
+        {
+          "name": "ax:accountability",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 15,
+          "kind": "Axiom"
+        },
+        {
+          "name": "con:dag",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 25,
+          "kind": "Other"
+        },
+        {
+          "name": "con:cardinality",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 33,
+          "kind": "Other"
+        },
+        {
+          "name": "eq:finite-closure",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 35,
+          "kind": "Equation"
+        }
+      ],
+      "references": [
+        {
+          "target": "ax:boundary",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 17,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:accountability",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 17,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:boundary",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 22,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:boundary",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 22,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:boundary",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 30,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:finite-closure",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 37,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 40,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025af",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 40,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025af",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 40,
+          "has_anchor": true
+        },
+        {
+          "target": "cormen2022",
+          "file": "sections/02_axioms_and_relational_closure.typ",
+          "line": 40,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "sections/03_formal_verification_calculus.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "31d443c40b4ac8da1121052fcf508f347ac42d8f70018dc6741e21a5415c61d5",
+      "line_count": 47,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Typed Derivation Graphs and Epistemic Boundary Cuts",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:calculus",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "ch:graph",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 18,
+          "kind": "Choice"
+        },
+        {
+          "name": "eq:ext-flux",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 27,
+          "kind": "Equation"
+        },
+        {
+          "name": "eq:dem-leak",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 29,
+          "kind": "Equation"
+        },
+        {
+          "name": "ch:flux",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 30,
+          "kind": "Choice"
+        },
+        {
+          "name": "eq:cut-partition",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 37,
+          "kind": "Equation"
+        },
+        {
+          "name": "cor:boundary-cut",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 43,
+          "kind": "Corollary"
+        }
+      ],
+      "references": [
+        {
+          "target": "ax:boundary",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:accountability",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 5,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:graph",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 35,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:flux",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 35,
+          "has_anchor": false
+        },
+        {
+          "target": "con:dag",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:cut-partition",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:boundary",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 42,
+          "has_anchor": false
+        },
+        {
+          "target": "con:dag",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 42,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:graph",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 42,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:flux",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 42,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:ext-flux",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 42,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:dem-leak",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 42,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:cut-partition",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 42,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 46,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025gm",
+          "file": "sections/03_formal_verification_calculus.typ",
+          "line": 46,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "3a0f67c6b702465f623b8448c5606545bba6ccbe61c79c4b9b03e0b22f3b0eb3",
+      "line_count": 46,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Two-Pass Premise Hoisting and Rubric Meet-Semilattice",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:hoisting",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "eq:hoisted-bom",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 15,
+          "kind": "Equation"
+        },
+        {
+          "name": "ch:hoisting",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 18,
+          "kind": "Choice"
+        },
+        {
+          "name": "eq:rubric-meet",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 27,
+          "kind": "Equation"
+        },
+        {
+          "name": "ch:rubric",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 29,
+          "kind": "Choice"
+        },
+        {
+          "name": "eq:rubric-homomorphism",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 36,
+          "kind": "Equation"
+        },
+        {
+          "name": "cor:hoisting-rubric",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 42,
+          "kind": "Corollary"
+        }
+      ],
+      "references": [
+        {
+          "target": "con:cardinality",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 16,
+          "has_anchor": false
+        },
+        {
+          "target": "cor:boundary-cut",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 17,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:rubric-meet",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 35,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:rubric-homomorphism",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 40,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:accountability",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "con:cardinality",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:hoisting",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:rubric",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:hoisted-bom",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:rubric-meet",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:rubric-homomorphism",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 45,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025af",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 45,
+          "has_anchor": true
+        },
+        {
+          "target": "davey2002",
+          "file": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+          "line": 45,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": []
+    },
+    {
+      "path": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "91943c73f5b3d28543cf84ab87d13b561a3012ba8d4d90832f61f3425e946ec9",
+      "line_count": 56,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Finite Stokes Verification, Tier Firewalls, and Graph Slicing",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:stokes-slicing",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "eq:afc-flux-defs",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 14,
+          "kind": "Equation"
+        },
+        {
+          "name": "ch:afc-module",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 16,
+          "kind": "Choice"
+        },
+        {
+          "name": "eq:hop-slice",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 25,
+          "kind": "Equation"
+        },
+        {
+          "name": "ch:slicing",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 26,
+          "kind": "Choice"
+        },
+        {
+          "name": "eq:stokes-balance",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 33,
+          "kind": "Equation"
+        },
+        {
+          "name": "cor:stokes",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 39,
+          "kind": "Corollary"
+        },
+        {
+          "name": "eq:tier-firewall",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 46,
+          "kind": "Equation"
+        },
+        {
+          "name": "cor:firewall-slice",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 52,
+          "kind": "Corollary"
+        }
+      ],
+      "references": [
+        {
+          "target": "ch:afc-module",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 31,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:afc-flux-defs",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 32,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:stokes-balance",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 35,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:afc-module",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 37,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:boundary",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:afc-module",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:afc-flux-defs",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:stokes-balance",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:slicing",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 44,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:tier-firewall",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 50,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:boundary",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 51,
+          "has_anchor": false
+        },
+        {
+          "target": "con:dag",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 51,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:slicing",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 51,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:hop-slice",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 51,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:tier-firewall",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 51,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025afc",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 55,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025afc",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 55,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2026aod",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 55,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2026aod",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 55,
+          "has_anchor": true
+        },
+        {
+          "target": "shannon1948",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 55,
+          "has_anchor": true
+        },
+        {
+          "target": "cover2006",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 55,
+          "has_anchor": true
+        },
+        {
+          "target": "norris1997",
+          "file": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+          "line": 55,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": [
+        "DEC",
+        "Stokes"
+      ]
+    },
+    {
+      "path": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "tier": "Main",
+      "frozen": true,
+      "sha256": "57be652d27ddcb2a3e97c17949aaffe3de6a711ec58ee5272924335b5fa2a6c4",
+      "line_count": 46,
+      "includes": [
+        "preamble.typ"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "title": "Source-Tree Epistemic Hygiene and Stratified Inquiry",
+          "line": 3
+        }
+      ],
+      "labels": [
+        {
+          "name": "sec:hygiene-inquiry",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 3,
+          "kind": "Section"
+        },
+        {
+          "name": "ch:hygiene",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 18,
+          "kind": "Choice"
+        },
+        {
+          "name": "eq:inquiry-ladder",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 27,
+          "kind": "Equation"
+        },
+        {
+          "name": "ch:inquiry",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 29,
+          "kind": "Choice"
+        },
+        {
+          "name": "eq:hygiene-invariant",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 36,
+          "kind": "Equation"
+        },
+        {
+          "name": "cor:hygiene",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 42,
+          "kind": "Corollary"
+        }
+      ],
+      "references": [
+        {
+          "target": "eq:inquiry-ladder",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 28,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:hygiene",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 34,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:accountability",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 35,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:rubric",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 37,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:hygiene-invariant",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "cor:boundary-cut",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:inquiry",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:inquiry-ladder",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 38,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:hygiene-invariant",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 40,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:boundary",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "ax:accountability",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:rubric",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:hygiene",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "ch:inquiry",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:inquiry-ladder",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "eq:hygiene-invariant",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 41,
+          "has_anchor": false
+        },
+        {
+          "target": "poyau2025af",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 45,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2025af",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 45,
+          "has_anchor": true
+        },
+        {
+          "target": "poyau2026aod",
+          "file": "sections/06_source_hygiene_and_provenance_isolation.typ",
+          "line": 45,
+          "has_anchor": true
+        }
+      ],
+      "distinctions": [],
+      "motifs": []
+    }
+  ],
+  "edges": [
+    {
+      "origin": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "target": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "appendices/B_compaction_and_firewall_invariants.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "motif:DEC",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "motif:Hinge",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "appendices/B_compaction_and_firewall_invariants.typ",
+      "target": "motif:Stokes",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "target": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "target": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "target": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "target": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "appendices/D_glossary_and_symbol_table.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "appendices/D_glossary_and_symbol_table.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "main.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "sections/00_title.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "sections/01_abstract.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "appendices/A_rule_anchor_and_rubric_map.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "appendices/B_compaction_and_firewall_invariants.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "main.typ",
+      "target": "appendices/D_glossary_and_symbol_table.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+      "target": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+      "target": "motif:Stokes",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+      "target": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/sections/00_scope_and_architecture.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/sections/01_cli_and_compiler_passes.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/appendices/A_worked_audit_ledger_fixtures.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "manual/appendices/B_diagnostic_remediation_catalog.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/main.typ",
+      "target": "motif:DEC",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/preamble.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/00_scope_and_architecture.typ",
+      "target": "manual/sections/00_scope_and_architecture.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/01_cli_and_compiler_passes.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/sections/01_cli_and_compiler_passes.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/01_cli_and_compiler_passes.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/01_cli_and_compiler_passes.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/01_cli_and_compiler_passes.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/01_cli_and_compiler_passes.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "target": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "target": "motif:DEC",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "target": "motif:Hinge",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/02_dec_stokes_and_capacity_fixtures.typ",
+      "target": "motif:Stokes",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "appendices/C_manifest_and_context_bundle_grammar.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:ADAR",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Awareness",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Dimonon",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Dion",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Ditrion",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Duad",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Duon",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Hinge",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Monon",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:SADAR",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Stokes",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Tetratrion",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/03_digest_frozen_guard_and_slicing.typ",
+      "target": "motif:Tritrion",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+      "target": "manual/sections/04_hygiene_and_leakage_quarantine.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "target": "manual/preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "target": "manual/sections/05_stratified_agent_inquiry_protocol.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/00_title.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "sections/02_axioms_and_relational_closure.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "sections/02_axioms_and_relational_closure.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/02_axioms_and_relational_closure.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/02_axioms_and_relational_closure.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/02_axioms_and_relational_closure.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/02_axioms_and_relational_closure.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/02_axioms_and_relational_closure.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/03_formal_verification_calculus.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "motif:DEC",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "sections/05_dec_stokes_and_blast_radius_slicing.typ",
+      "target": "motif:Stokes",
+      "kind": "MotifDependency"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "preamble.typ",
+      "kind": "Include"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/03_formal_verification_calculus.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/02_axioms_and_relational_closure.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/04_two_pass_hoisting_and_rubric_algebra.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    },
+    {
+      "origin": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "target": "sections/06_source_hygiene_and_provenance_isolation.typ",
+      "kind": "Reference"
+    }
+  ],
+  "firewall_violations": [],
+  "include_cycles": []
+}

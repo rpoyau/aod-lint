@@ -1,0 +1,2 @@
+Canonical version: v0.2.0
+AOD-Lint (Executable Verification for the Axiomatic Fundamentalism Protocol) is the canonical package.

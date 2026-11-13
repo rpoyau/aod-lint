@@ -66,25 +66,67 @@ fn main() {
 
     match cli.command {
         Commands::Check { file, strict, json } => {
-            let path_str = file.to_string_lossy();
-            let content = match fs::read_to_string(&file) {
-                Ok(c) => c,
-                Err(err) => {
-                    eprintln!("{} Failed to read {}: {}", "error:".red().bold(), path_str, err);
+            let path_str = file.to_string_lossy().to_string();
+            let mut diagnostics = Vec::new();
+            let mut checked_files = 0usize;
+
+            if file.is_dir() {
+                let mut rel_files = Vec::new();
+                if let Err(err) =
+                    aod_lint::passes::digest::collect_source_files(&file, &file, &mut rel_files)
+                {
+                    eprintln!("{} {}", "error:".red().bold(), err);
                     std::process::exit(1);
                 }
-            };
-
-            let diagnostics = if file
-                .extension()
-                .and_then(|e| e.to_str())
-                .map(|e| e.eq_ignore_ascii_case("tex"))
-                .unwrap_or(false)
-            {
-                LatexPass::new(&path_str, &content, strict).run()
+                rel_files.sort();
+                for rel in rel_files {
+                    let full = file.join(&rel);
+                    let content = match fs::read_to_string(&full) {
+                        Ok(c) => c,
+                        Err(err) => {
+                            eprintln!(
+                                "{} Failed to read {}: {}",
+                                "error:".red().bold(),
+                                full.display(),
+                                err
+                            );
+                            std::process::exit(1);
+                        }
+                    };
+                    let file_diags = if rel.to_ascii_lowercase().ends_with(".tex") {
+                        LatexPass::new(&rel, &content, strict).run()
+                    } else {
+                        TypstAstPass::new(&rel, &content, strict).run()
+                    };
+                    diagnostics.extend(file_diags);
+                    checked_files += 1;
+                }
             } else {
-                TypstAstPass::new(&path_str, &content, strict).run()
-            };
+                let content = match fs::read_to_string(&file) {
+                    Ok(c) => c,
+                    Err(err) => {
+                        eprintln!(
+                            "{} Failed to read {}: {}",
+                            "error:".red().bold(),
+                            path_str,
+                            err
+                        );
+                        std::process::exit(1);
+                    }
+                };
+                let file_diags = if file
+                    .extension()
+                    .and_then(|e| e.to_str())
+                    .map(|e| e.eq_ignore_ascii_case("tex"))
+                    .unwrap_or(false)
+                {
+                    LatexPass::new(&path_str, &content, strict).run()
+                } else {
+                    TypstAstPass::new(&path_str, &content, strict).run()
+                };
+                diagnostics.extend(file_diags);
+                checked_files = 1;
+            }
 
             let mut rubric = Section8Rubric::new();
             rubric.apply_diagnostics(&diagnostics);
@@ -94,6 +136,7 @@ fn main() {
             if json {
                 let output = serde_json::json!({
                     "target": path_str,
+                    "checked_files": checked_files,
                     "strict_mode": strict,
                     "converged": rubric.is_converged(),
                     "rubric_bits": rubric.to_bitstring(),
@@ -105,7 +148,7 @@ fn main() {
                 println!("{}", "======================================================================".cyan());
                 println!("                  AOD-LINT AXIOMATIC REPORT (Rust Engine)");
                 println!("{}", "======================================================================".cyan());
-                println!("Target: {}", path_str.bold());
+                println!("Target: {} ({} file(s))", path_str.bold(), checked_files);
                 println!("Mode:   {}", if strict { "STRICT (Internal AOD)" } else { "DIAGNOSTIC (Two-Pass Hoisting)" });
                 println!("Hoisted Dependencies: {}", hoisted_count);
                 println!(

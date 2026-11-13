@@ -55,6 +55,8 @@ impl AodDigestPass {
         source_files.sort();
 
         let typ_include_re = Regex::new(r#"#(?:include|import)\s+"([^"]+\.typ)""#).unwrap();
+        let typ_main_ref_re =
+            Regex::new(r#"#main-(?:ref|eq|sec|cor|app|tab|choice|con|ax)\(\s*"([^"]+)""#).unwrap();
         let tex_input_re = Regex::new(r"\\(?:input|include)\{([^}]+)\}").unwrap();
         let tex_heading_re = Regex::new(r"\\(sub)*section\*?(?:\[[^\]]*\])?\{([^}]+)\}").unwrap();
         let tex_label_re = Regex::new(r"\\label\{([^}]+)\}").unwrap();
@@ -106,6 +108,22 @@ impl AodDigestPass {
                     let resolved = resolve_relative_include(rel_path, raw_inc);
                     if !includes.contains(&resolved) {
                         includes.push(resolved);
+                    }
+                }
+
+                for (idx, raw_line) in content.lines().enumerate() {
+                    let line = idx + 1;
+                    let code = raw_line.split("//").next().unwrap_or("");
+                    for cap in typ_main_ref_re.captures_iter(code) {
+                        let target = cap[1].trim().to_string();
+                        if !target.is_empty() {
+                            references.push(RefRecord {
+                                target,
+                                file: rel_path.clone(),
+                                line,
+                                has_anchor: true,
+                            });
+                        }
                     }
                 }
 
@@ -215,7 +233,7 @@ impl AodDigestPass {
 
         Ok(AodManifest {
             schema_version: "1.0".to_string(),
-            root: base_dir.to_string_lossy().to_string(),
+            root: ".".to_string(),
             files,
             edges,
             firewall_violations,
@@ -267,14 +285,14 @@ impl AodDigestPass {
     }
 }
 
-fn collect_source_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Result<(), String> {
+pub fn collect_source_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Result<(), String> {
     let entries = fs::read_dir(dir)
         .map_err(|e| format!("Failed to read directory {}: {}", dir.display(), e))?;
     for entry in entries {
         let entry = entry.map_err(|e| e.to_string())?;
         let path = entry.path();
         let file_name = entry.file_name().to_string_lossy().to_string();
-        if file_name.starts_with('.') || file_name == "target" {
+        if file_name.starts_with('.') || file_name == "target" || file_name == "dist" {
             continue;
         }
         if path.is_dir() {

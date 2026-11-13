@@ -1,9 +1,14 @@
 [package]
 name = "aod-lint"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Reginald Poyau"]
-description = "Axiomatic Fundamentalism & D.E.C. Linter/Compiler for Typst"
+license = "MIT"
+description = "Executable verification compiler and treatise linter for the Axiomatic Fundamentalism (AF), AFC, and AOD protocols"
+readme = "README.md"
+repository = "https://github.com/rpoyau/aod-lint"
+keywords = ["axiomatic", "verification", "typst", "latex", "linter"]
+categories = ["command-line-utilities", "compilers", "science"]
 
 [dependencies]
 clap = { version = "4.5", features = ["derive"] }
