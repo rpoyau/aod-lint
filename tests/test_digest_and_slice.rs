@@ -123,3 +123,64 @@ fn test_main_to_manual_firewall_violation() {
 
     let _ = fs::remove_dir_all(&dir);
 }
+
+#[test]
+fn test_latex_digest_slice_and_check() {
+    use aod_lint::models::diagnostics::RuleAnchor;
+    use aod_lint::passes::latex::LatexPass;
+
+    let dir = make_temp_project("latex_support");
+
+    fs::write(
+        dir.join("main.tex"),
+        "\\documentclass{article}\n\\input{sections/01_null.tex}\n",
+    )
+    .unwrap();
+
+    fs::write(
+        dir.join("sections/01_null.tex"),
+        "\\section{Null Sameness}\\label{sec:null}\nMonon closure \\eqnref{eq:monon}.\n\\begin{equation}\\label{eq:monon}\\Phi = 1_C\\end{equation}\n",
+    )
+    .unwrap();
+
+    fs::write(
+        dir.join("manual/01_dec.tex"),
+        "\\section{D.E.C. Ledger}\\label{sec:dec}\nUsing \\mainequation{eq:monon}, \\SADARop{} is evaluated.\nSee \\cite{poyau2025} for background.\n",
+    )
+    .unwrap();
+
+    let manifest = AodDigestPass::new(&dir).run().unwrap();
+    assert_eq!(manifest.files.len(), 3);
+    assert!(manifest.firewall_violations.is_empty());
+    assert!(manifest.include_cycles.is_empty());
+
+    let sec_null = manifest
+        .files
+        .iter()
+        .find(|f| f.path == "sections/01_null.tex")
+        .unwrap();
+    assert_eq!(sec_null.tier, DocumentTier::Main);
+    assert!(sec_null.frozen);
+    assert!(sec_null.motifs.contains(&"Monon".to_string()));
+
+    let man_dec = manifest
+        .files
+        .iter()
+        .find(|f| f.path == "manual/01_dec.tex")
+        .unwrap();
+    assert_eq!(man_dec.tier, DocumentTier::Manual);
+    assert!(!man_dec.frozen);
+    assert!(man_dec.motifs.contains(&"SADAR".to_string()));
+    assert!(man_dec.motifs.contains(&"DEC".to_string()));
+
+    let bundle = AodSlicePass::new(&manifest, 1).run_from_files(vec!["manual/01_dec.tex".to_string()]);
+    assert!(bundle.frozen_main_violations.is_empty());
+    assert!(bundle.impacted_files.contains(&"sections/01_null.tex".to_string()));
+
+    let man_src = fs::read_to_string(dir.join("manual/01_dec.tex")).unwrap();
+    let diags = LatexPass::new("manual/01_dec.tex", &man_src, false).run();
+    assert_eq!(diags.len(), 1);
+    assert_eq!(diags[0].rule, RuleAnchor::Sec7PreciseAnchors);
+
+    let _ = fs::remove_dir_all(&dir);
+}

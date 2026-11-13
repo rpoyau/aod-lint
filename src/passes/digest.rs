@@ -20,7 +20,7 @@ const KNOWN_MOTIFS: &[(&str, &str)] = &[
     ("Tritrion", r"\bTritrion\b"),
     ("Tetratrion", r"\bTetratrion\b"),
     ("RingGate", r"(?i)\bRing\s+Gate\b"),
-    ("SADAR", r"\bSADAR\b"),
+    ("SADAR", r"\bSADAR\b|\\SADARop\b"),
     ("ADAR", r"\bADAR\b"),
     ("Awareness", r"\bAwareness\b|\bSELF\s*/\s*BETWEEN\s*/\s*NOT-SELF\b"),
     ("DEC", r"\bD\.E\.C\."),
@@ -50,11 +50,20 @@ impl AodDigestPass {
             self.root.clone()
         };
 
-        let mut typ_files = Vec::new();
-        collect_typ_files(&base_dir, &base_dir, &mut typ_files)?;
-        typ_files.sort();
+        let mut source_files = Vec::new();
+        collect_source_files(&base_dir, &base_dir, &mut source_files)?;
+        source_files.sort();
 
-        let include_re = Regex::new(r#"#(?:include|import)\s+"([^"]+\.typ)""#).unwrap();
+        let typ_include_re = Regex::new(r#"#(?:include|import)\s+"([^"]+\.typ)""#).unwrap();
+        let tex_input_re = Regex::new(r"\\(?:input|include)\{([^}]+)\}").unwrap();
+        let tex_heading_re = Regex::new(r"\\(sub)*section\*?(?:\[[^\]]*\])?\{([^}]+)\}").unwrap();
+        let tex_label_re = Regex::new(r"\\label\{([^}]+)\}").unwrap();
+        let tex_ref_re = Regex::new(
+            r"\\(?:ref|eqref|secref|eqnref|appref|tabref|figref|mainequation|mainsection|mainappendix|maintable)\{([^}]+)\}",
+        )
+        .unwrap();
+        let tex_cite_re = Regex::new(r"\\cite(\[[^\]]*\])?\{([^}]+)\}").unwrap();
+
         let choice_re = Regex::new(r"\b(Choice\s+[A-Z0-9]+|Axiom\s+[A-Z0-9]+|Def(?:inition)?\s+[0-9]+)\b").unwrap();
         let motif_res: Vec<(&str, Regex)> = KNOWN_MOTIFS
             .iter()
@@ -62,7 +71,7 @@ impl AodDigestPass {
             .collect();
 
         let mut files = Vec::new();
-        for rel_path in &typ_files {
+        for rel_path in &source_files {
             let full_path = base_dir.join(rel_path);
             let bytes = fs::read(&full_path)
                 .map_err(|e| format!("Failed to read {}: {}", full_path.display(), e))?;
@@ -73,27 +82,44 @@ impl AodDigestPass {
             let frozen = matches!(tier, DocumentTier::Main | DocumentTier::Appendix);
 
             let mut includes = Vec::new();
-            for cap in include_re.captures_iter(&content) {
-                let raw_inc = &cap[1];
-                let resolved = resolve_relative_include(rel_path, raw_inc);
-                if !includes.contains(&resolved) {
-                    includes.push(resolved);
-                }
-            }
-
             let mut headings = Vec::new();
             let mut labels = Vec::new();
             let mut references = Vec::new();
-            let root_ast = parse(&content);
-            extract_ast_items(
-                &root_ast,
-                0,
-                rel_path,
-                &content,
-                &mut headings,
-                &mut labels,
-                &mut references,
-            );
+
+            if rel_path.ends_with(".tex") {
+                extract_latex_items(
+                    rel_path,
+                    &content,
+                    &tex_input_re,
+                    &tex_heading_re,
+                    &tex_label_re,
+                    &tex_ref_re,
+                    &tex_cite_re,
+                    &mut includes,
+                    &mut headings,
+                    &mut labels,
+                    &mut references,
+                );
+            } else {
+                for cap in typ_include_re.captures_iter(&content) {
+                    let raw_inc = &cap[1];
+                    let resolved = resolve_relative_include(rel_path, raw_inc);
+                    if !includes.contains(&resolved) {
+                        includes.push(resolved);
+                    }
+                }
+
+                let root_ast = parse(&content);
+                extract_ast_items(
+                    &root_ast,
+                    0,
+                    rel_path,
+                    &content,
+                    &mut headings,
+                    &mut labels,
+                    &mut references,
+                );
+            }
 
             let mut distinctions_set = BTreeSet::new();
             for cap in choice_re.captures_iter(&content) {
@@ -223,7 +249,7 @@ impl AodDigestPass {
     }
 }
 
-fn collect_typ_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Result<(), String> {
+fn collect_source_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Result<(), String> {
     let entries = fs::read_dir(dir)
         .map_err(|e| format!("Failed to read directory {}: {}", dir.display(), e))?;
     for entry in entries {
@@ -234,8 +260,11 @@ fn collect_typ_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Result<(
             continue;
         }
         if path.is_dir() {
-            collect_typ_files(base, &path, out)?;
-        } else if path.extension().and_then(|e| e.to_str()) == Some("typ") {
+            collect_source_files(base, &path, out)?;
+        } else if matches!(
+            path.extension().and_then(|e| e.to_str()),
+            Some("typ") | Some("tex")
+        ) {
             let rel = path
                 .strip_prefix(base)
                 .unwrap_or(&path)
@@ -248,17 +277,112 @@ fn collect_typ_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Result<(
 }
 
 fn classify_tier(rel_path: &str) -> DocumentTier {
-    if rel_path.starts_with("manual/") || rel_path == "manual.typ" {
+    if rel_path.starts_with("manual/") || rel_path == "manual.typ" || rel_path == "manual.tex" {
         DocumentTier::Manual
     } else if rel_path.starts_with("appendices/") {
         DocumentTier::Appendix
     } else if rel_path == "main.typ"
+        || rel_path == "main.tex"
         || rel_path == "preamble.typ"
+        || rel_path == "preamble.tex"
         || rel_path.starts_with("sections/")
     {
         DocumentTier::Main
     } else {
         DocumentTier::Other
+    }
+}
+
+#[allow(clippy::too_many_arguments)]
+fn extract_latex_items(
+    file_path: &str,
+    content: &str,
+    input_re: &Regex,
+    heading_re: &Regex,
+    label_re: &Regex,
+    ref_re: &Regex,
+    cite_re: &Regex,
+    includes: &mut Vec<String>,
+    headings: &mut Vec<HeadingRecord>,
+    labels: &mut Vec<LabelRecord>,
+    references: &mut Vec<RefRecord>,
+) {
+    use crate::passes::latex::strip_latex_comment;
+
+    for (idx, raw_line) in content.lines().enumerate() {
+        let line = idx + 1;
+        let code = strip_latex_comment(raw_line);
+        if code.trim().is_empty() {
+            continue;
+        }
+
+        for cap in input_re.captures_iter(code) {
+            let mut raw_inc = cap[1].trim().to_string();
+            if !raw_inc.ends_with(".tex") {
+                raw_inc.push_str(".tex");
+            }
+            let resolved = resolve_relative_include(file_path, &raw_inc);
+            if !includes.contains(&resolved) {
+                includes.push(resolved);
+            }
+        }
+
+        for cap in heading_re.captures_iter(code) {
+            let full = cap.get(0).unwrap().as_str();
+            let level = if full.starts_with("\\subsubsection") {
+                3
+            } else if full.starts_with("\\subsection") {
+                2
+            } else {
+                1
+            };
+            headings.push(HeadingRecord {
+                level,
+                title: cap[2].trim().to_string(),
+                line,
+            });
+        }
+
+        for cap in label_re.captures_iter(code) {
+            let name = cap[1].trim().to_string();
+            if !name.is_empty() {
+                labels.push(LabelRecord {
+                    kind: classify_label(&name),
+                    name,
+                    file: file_path.to_string(),
+                    line,
+                });
+            }
+        }
+
+        for cap in ref_re.captures_iter(code) {
+            for target in cap[1].split(',') {
+                let target = target.trim().to_string();
+                if !target.is_empty() {
+                    references.push(RefRecord {
+                        target,
+                        file: file_path.to_string(),
+                        line,
+                        has_anchor: true,
+                    });
+                }
+            }
+        }
+
+        for cap in cite_re.captures_iter(code) {
+            let has_anchor = cap.get(1).is_some();
+            for key in cap[2].split(',') {
+                let key = key.trim().to_string();
+                if !key.is_empty() {
+                    references.push(RefRecord {
+                        target: key,
+                        file: file_path.to_string(),
+                        line,
+                        has_anchor,
+                    });
+                }
+            }
+        }
     }
 }
 

@@ -7,6 +7,7 @@ use aod_lint::models::diagnostics::Severity;
 use aod_lint::models::manifest::AodManifest;
 use aod_lint::models::rubric::Section8Rubric;
 use aod_lint::passes::digest::AodDigestPass;
+use aod_lint::passes::latex::LatexPass;
 use aod_lint::passes::slice::AodSlicePass;
 use aod_lint::passes::typst_ast::TypstAstPass;
 
@@ -65,8 +66,16 @@ fn main() {
                 }
             };
 
-            let pass = TypstAstPass::new(&path_str, &content, strict);
-            let diagnostics = pass.run();
+            let diagnostics = if file
+                .extension()
+                .and_then(|e| e.to_str())
+                .map(|e| e.eq_ignore_ascii_case("tex"))
+                .unwrap_or(false)
+            {
+                LatexPass::new(&path_str, &content, strict).run()
+            } else {
+                TypstAstPass::new(&path_str, &content, strict).run()
+            };
 
             let mut rubric = Section8Rubric::new();
             rubric.apply_diagnostics(&diagnostics);
@@ -179,7 +188,7 @@ fn main() {
                 println!("{}", manifest_json);
             } else {
                 println!(
-                    "AOD-DIGEST: {} Typst file(s), {} edge(s), {} firewall violation(s), {} include cycle(s)",
+                    "AOD-DIGEST: {} source file(s), {} edge(s), {} firewall violation(s), {} include cycle(s)",
                     manifest.files.len(),
                     manifest.edges.len(),
                     manifest.firewall_violations.len(),
