@@ -45,7 +45,7 @@ fn test_digest_manifest_frozen_guard_and_slice() {
     )
     .unwrap();
 
-    let digest = AodDigestPass::new(&dir);
+    let digest = AodDigestPass::new(&dir).with_frozen_main(true);
     let baseline = digest.run().unwrap();
 
     assert_eq!(baseline.files.len(), 4);
@@ -84,9 +84,15 @@ diff --git a/manual/01_dec_ledger.typ b/manual/01_dec_ledger.typ
     let slicer = AodSlicePass::new(&baseline, 1);
     let bundle = slicer.run_from_diff(diff);
     assert!(bundle.frozen_main_violations.is_empty());
-    assert!(bundle.impacted_files.contains(&"manual/01_dec_ledger.typ".to_string()));
-    assert!(bundle.impacted_files.contains(&"sections/01_null.typ".to_string()));
-    assert!(!bundle.impacted_files.contains(&"manual/02_unrelated.typ".to_string()));
+    assert!(bundle
+        .impacted_files
+        .contains(&"manual/01_dec_ledger.typ".to_string()));
+    assert!(bundle
+        .impacted_files
+        .contains(&"sections/01_null.typ".to_string()));
+    assert!(!bundle
+        .impacted_files
+        .contains(&"manual/02_unrelated.typ".to_string()));
 
     // Mutate frozen Main file and verify frozen SHA-256 guard triggers
     fs::write(
@@ -119,7 +125,10 @@ fn test_main_to_manual_firewall_violation() {
 
     let manifest = AodDigestPass::new(&dir).run().unwrap();
     assert_eq!(manifest.firewall_violations.len(), 1);
-    assert_eq!(manifest.firewall_violations[0].origin_file, "sections/01_bad.typ");
+    assert_eq!(
+        manifest.firewall_violations[0].origin_file,
+        "sections/01_bad.typ"
+    );
 
     let _ = fs::remove_dir_all(&dir);
 }
@@ -160,7 +169,7 @@ fn test_latex_digest_slice_and_check() {
         .find(|f| f.path == "sections/01_null.tex")
         .unwrap();
     assert_eq!(sec_null.tier, DocumentTier::Main);
-    assert!(sec_null.frozen);
+    assert!(!sec_null.frozen);
     assert!(sec_null.motifs.contains(&"Monon".to_string()));
 
     let man_dec = manifest
@@ -173,9 +182,12 @@ fn test_latex_digest_slice_and_check() {
     assert!(man_dec.motifs.contains(&"SADAR".to_string()));
     assert!(man_dec.motifs.contains(&"DEC".to_string()));
 
-    let bundle = AodSlicePass::new(&manifest, 1).run_from_files(vec!["manual/01_dec.tex".to_string()]);
+    let bundle =
+        AodSlicePass::new(&manifest, 1).run_from_files(vec!["manual/01_dec.tex".to_string()]);
     assert!(bundle.frozen_main_violations.is_empty());
-    assert!(bundle.impacted_files.contains(&"sections/01_null.tex".to_string()));
+    assert!(bundle
+        .impacted_files
+        .contains(&"sections/01_null.tex".to_string()));
 
     let man_src = fs::read_to_string(dir.join("manual/01_dec.tex")).unwrap();
     let diags = LatexPass::new("manual/01_dec.tex", &man_src, false).run();

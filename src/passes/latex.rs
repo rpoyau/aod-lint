@@ -59,7 +59,7 @@ impl<'a> LatexPass<'a> {
                             keys
                         ),
                         suggested_fix: Some(format!("\\cite[Theorem X, p. Y]{{{}}}", keys)),
-                        hoisted: false,
+                        dependency_candidate: false,
                     });
                 }
             }
@@ -76,7 +76,7 @@ impl<'a> LatexPass<'a> {
                         mat.as_str()
                     ),
                     suggested_fix: Some("Replace range with exact \\eqnref{...} or \\secref{...} anchor.".into()),
-                    hoisted: false,
+                    dependency_candidate: false,
                 });
             }
 
@@ -92,11 +92,11 @@ impl<'a> LatexPass<'a> {
                     file: self.file_path.to_string(),
                     line: line_num,
                     column: mat.start() + 1,
-                    message: format!("Midstream premise import '{}' detected.", mat.as_str()),
+                    message: format!("Possible premise dependency '{}'; inspect its declaration and scope.", mat.as_str()),
                     suggested_fix: Some(
-                        "Hoisted to Dependency Manifest. Move upfront to Section 2 (Modelling Choices) to resolve warning.".into(),
+                        "Check whether this premise is already declared at its owning scope. This lexical scan does not reconstruct or hoist dependencies.".into(),
                     ),
-                    hoisted: !self.strict_mode,
+                    dependency_candidate: true,
                 });
             }
 
@@ -113,13 +113,13 @@ impl<'a> LatexPass<'a> {
                     line: line_num,
                     column: mat.start() + 1,
                     message: format!(
-                        "CHECK YOUR IMPORTS: Heavy ontological import '{}' carries uncountable ghost states (RF2) and UV singularity liabilities.",
+                        "Representation term '{}' requires its declared domain and hypotheses to be checked; the term alone does not establish an undeclared import.",
                         mat.as_str()
                     ),
                     suggested_fix: Some(
-                        "Verify if a finite distinction set V with AFC Discrete Stokes suffices.".into(),
+                        "Review the actual model and source dependencies. Do not replace it with an AFC model without a separately declared construction.".into(),
                     ),
-                    hoisted: !self.strict_mode,
+                    dependency_candidate: true,
                 });
             }
         }

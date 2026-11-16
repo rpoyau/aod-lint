@@ -22,7 +22,10 @@ const KNOWN_MOTIFS: &[(&str, &str)] = &[
     ("RingGate", r"(?i)\bRing\s+Gate\b"),
     ("SADAR", r"\bSADAR\b|\\SADARop\b"),
     ("ADAR", r"\bADAR\b"),
-    ("Awareness", r"\bAwareness\b|\bSELF\s*/\s*BETWEEN\s*/\s*NOT-SELF\b"),
+    (
+        "Awareness",
+        r"\bAwareness\b|\bSELF\s*/\s*BETWEEN\s*/\s*NOT-SELF\b",
+    ),
     ("DEC", r"\bD\.E\.C\."),
     ("Stokes", r"\bStokes\b"),
     ("CurlingCurl", r"(?i)\bcurling[- ]curls?\b"),
@@ -31,13 +34,21 @@ const KNOWN_MOTIFS: &[(&str, &str)] = &[
 
 pub struct AodDigestPass {
     root: PathBuf,
+    freeze_main: bool,
 }
 
 impl AodDigestPass {
     pub fn new<P: AsRef<Path>>(root: P) -> Self {
         Self {
             root: root.as_ref().to_path_buf(),
+            freeze_main: false,
         }
+    }
+
+    /// Select an owner-authorized preservation policy, independently of tiers.
+    pub fn with_frozen_main(mut self, freeze_main: bool) -> Self {
+        self.freeze_main = freeze_main;
+        self
     }
 
     pub fn run(&self) -> Result<AodManifest, String> {
@@ -64,7 +75,9 @@ impl AodDigestPass {
         .unwrap();
         let tex_cite_re = Regex::new(r"\\cite(\[[^\]]*\])?\{([^}]+)\}").unwrap();
 
-        let choice_re = Regex::new(r"\b(Choice\s+[A-Z0-9]+|Axiom\s+[A-Z0-9]+|Def(?:inition)?\s+[0-9]+)\b").unwrap();
+        let choice_re =
+            Regex::new(r"\b(Choice\s+[A-Z0-9]+|Axiom\s+[A-Z0-9]+|Def(?:inition)?\s+[0-9]+)\b")
+                .unwrap();
         let motif_res: Vec<(&str, Regex)> = KNOWN_MOTIFS
             .iter()
             .map(|(name, pat)| (*name, Regex::new(pat).unwrap()))
@@ -79,7 +92,8 @@ impl AodDigestPass {
             let content = String::from_utf8_lossy(&bytes).to_string();
             let line_count = content.lines().count();
             let tier = classify_tier(rel_path);
-            let frozen = matches!(tier, DocumentTier::Main | DocumentTier::Appendix);
+            let frozen =
+                self.freeze_main && matches!(tier, DocumentTier::Main | DocumentTier::Appendix);
 
             let mut includes = Vec::new();
             let mut headings = Vec::new();
@@ -148,15 +162,19 @@ impl AodDigestPass {
             });
         }
 
-        let mut label_to_file: HashMap<String, (String, DocumentTier)> = HashMap::new();
+        let mut label_to_files: HashMap<String, Vec<(String, DocumentTier)>> = HashMap::new();
         for f in &files {
             for lbl in &f.labels {
-                label_to_file.insert(lbl.name.clone(), (f.path.clone(), f.tier));
+                label_to_files
+                    .entry(lbl.name.clone())
+                    .or_default()
+                    .push((f.path.clone(), f.tier));
             }
         }
 
         let mut edges = Vec::new();
         let mut firewall_violations = Vec::new();
+        let mut coverage_gaps = BTreeSet::new();
         let mut include_adj: HashMap<String, Vec<String>> = HashMap::new();
 
         for f in &files {
@@ -173,24 +191,31 @@ impl AodDigestPass {
             }
 
             for r in &f.references {
-                if let Some((target_file, target_tier)) = label_to_file.get(&r.target) {
-                    edges.push(EdgeRecord {
-                        origin: f.path.clone(),
-                        target: target_file.clone(),
-                        kind: EdgeKind::Reference,
-                    });
+                if let Some(targets) = label_to_files.get(&r.target) {
+                    for (target_file, _) in targets {
+                        edges.push(EdgeRecord {
+                            origin: f.path.clone(),
+                            target: target_file.clone(),
+                            kind: EdgeKind::Reference,
+                        });
+                    }
+                    if targets.len() > 1 {
+                        coverage_gaps.insert(format!("Reference '{}' in '{}' has {} indexed definitions; document scope is unresolved. Run labels on the actual driver and verify its build.", r.target, f.path, targets.len()));
+                    }
 
                     if matches!(f.tier, DocumentTier::Main | DocumentTier::Appendix)
-                        && *target_tier == DocumentTier::Manual
+                        && targets
+                            .iter()
+                            .all(|(_, tier)| *tier == DocumentTier::Manual)
                     {
                         firewall_violations.push(FirewallViolation {
                             rule: "AOD Main/Manual Separation".to_string(),
                             origin_file: f.path.clone(),
-                            target: format!("@{} ({})", r.target, target_file),
+                            target: format!("@{} ({})", r.target, targets.iter().map(|(path, _)| path.as_str()).collect::<Vec<_>>().join(", ")),
                             line: r.line,
                             message: format!(
-                                "Frozen {:?} file '{}' references Manual label '@{}' in '{}'. Main must not depend on Manual.",
-                                f.tier, f.path, r.target, target_file
+                                "{:?} file '{}' references '@{}', whose indexed definitions are all in Manual. Main must not depend on Manual.",
+                                f.tier, f.path, r.target
                             ),
                         });
                     }
@@ -215,13 +240,12 @@ impl AodDigestPass {
             edges,
             firewall_violations,
             include_cycles,
+            frozen_baseline_violations: Vec::new(),
+            coverage_gaps: coverage_gaps.into_iter().collect(),
         })
     }
 
-    pub fn verify_frozen_baseline(
-        baseline: &AodManifest,
-        current: &AodManifest,
-    ) -> Vec<String> {
+    pub fn verify_frozen_baseline(baseline: &AodManifest, current: &AodManifest) -> Vec<String> {
         let current_hashes: HashMap<&str, &str> = current
             .files
             .iter()
@@ -277,7 +301,13 @@ fn collect_source_files(base: &Path, dir: &Path, out: &mut Vec<String>) -> Resul
 }
 
 fn classify_tier(rel_path: &str) -> DocumentTier {
-    if rel_path.starts_with("manual/") || rel_path == "manual.typ" || rel_path == "manual.tex" {
+    if rel_path.starts_with("manual/")
+        || rel_path.starts_with("manual2/")
+        || matches!(
+            rel_path,
+            "manual.typ" | "manual.tex" | "manual2.typ" | "manual2.tex"
+        )
+    {
         DocumentTier::Manual
     } else if rel_path.starts_with("appendices/") {
         DocumentTier::Appendix
@@ -516,14 +546,7 @@ fn detect_cycles(adj: &HashMap<String, Vec<String>>) -> Vec<Vec<String>> {
 
     for k in keys {
         if !visited.contains(k.as_str()) {
-            dfs_cycle(
-                k,
-                adj,
-                &mut visited,
-                &mut in_stack,
-                &mut stack,
-                &mut cycles,
-            );
+            dfs_cycle(k, adj, &mut visited, &mut in_stack, &mut stack, &mut cycles);
         }
     }
     cycles
