@@ -89,6 +89,11 @@ pub struct AodManifest {
     pub edges: Vec<EdgeRecord>,
     pub firewall_violations: Vec<FirewallViolation>,
     pub include_cycles: Vec<Vec<String>>,
+    /// Results from an explicitly supplied preservation baseline, if any.
+    #[serde(default)]
+    pub frozen_baseline_violations: Vec<String>,
+    #[serde(default)]
+    pub coverage_gaps: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

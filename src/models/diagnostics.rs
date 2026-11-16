@@ -64,5 +64,5 @@ pub struct Diagnostic {
     pub column: usize,
     pub message: String,
     pub suggested_fix: Option<String>,
-    pub hoisted: bool,
+    pub dependency_candidate: bool,
 }
